@@ -1,0 +1,609 @@
+<!Doctype html>
+    <html>
+        <head>
+
+            <meta charset="utf-8">
+            <title>spiderclipVR</title>
+
+             <!-- Bootstrap css -->
+             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+            <!-- Bootstrap js -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+            <!--Bootstrap-->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        </head>
+
+        <style>
+            @media (min-width: 1024px){
+                body{
+
+                    font-family: Calibri, Arial, serif; /*Schriftart der Seite*/
+                    background-color: rgb(245, 245, 245); /*Hintergrundfarbe außerhalb des Containers*/
+                    padding: 0 15rem 0 15rem; /*padding des Hintergrundes, um Container eine Größe zu geben*/
+                }
+            }
+            th {
+              /*Eigenschaften der Tabellenkopfes*/
+                border-bottom: 2px black solid;
+                border-left: 2px black solid;
+            }
+            /*Eigenschaften der Tabelle*/
+            table td + td { border-left: 2px black solid;}
+            table {
+                border: 2px black solid;
+            }
+            /* Eigenschaften des Carousels*/
+            .carousel .carousel-item {
+                height: 500px;
+            }
+            .carousel-item img{
+                object-fit: cover;
+                height: 100%;
+            }
+            .carousel-control-next,.carousel-control-prev{
+                filter: invert(100%)
+            }
+        </style>
+
+        <body>
+            <div class="container px-5 bg-white" > <!--Inhalt der Seite befindet sich in weißem Container-->
+            <div class="row"><h1 class="text-center">SpiderClip: Towards an Open Source System for wearable Device Simulation in Virtual Reality</h1></div>
+           <div class="row pb-5"><h5 class="text-center">Autoren: Dirk Queck, Phillip Zimmer,Nicole Burkard, Iannis Albert, Georg Volkmar, Bastian Dänekas, Rainer Malaka, Yousef Abdelghany, Marc Herrlich</h5></div>
+
+                <div class="row pb-3"> <img src= "TeaserPicpng (2).png" class="img-fluid"></div> <!--responsiveness durch div Klasse row, deshalb befindet sich diese um jedes Element der Seite; durch img-fluid werden alle Bilder responsive-->
+                 <div class="row">
+                  Smartwatches and fitness trackers integrate different sensors from
+                  inertial measurement units to heart rate sensors in a very compact
+                  and affordable form factor. This makes them interesting and relevant
+                  research tools. One potential application domain is virtual
+                  reality, e.g., for health related applications such as exergames or
+                  simulation approaches. However, commercial devices complicate
+                  and limit the collection of raw and real-time data, suffer from privacy
+                  issues and are not tailored to using them with VR tracking
+                  systems. We address these issues with an open source design to
+                  facilitate the construction of VR-enabled wearables for conducting
+                  scientific experiments. 
+                 <div class="row pb-5"><center><video width="400" height="300" controls>
+                     <source src="SpiderClip_high_2 Kopie.mp4" type="video/mp4" media="all and (min-width: 60em)">
+                 </video></center></div>
+                 <!--pb = Abstand nach unten, pt = Abstand nach oben-->
+
+                 <hr> <!--Striche um die Absätze voneinander zu trennen-->
+                 
+            
+             <div class="row pt-5"><h2>0. What you need?</h2></div>
+             <div class="row pt-4 pb-2">
+                 This section covers all the materials to assemble the SpiderClip Prototype. You will need various hardwarecomponents, 
+                 a 3D printer, glue or screws and various software components. </div>
+             <div class="row pb-5 pt-2">
+                <table class="table-responsive"> <!--Tabelle passt sich durch responsive beim Verkleinern des Fensters der Seite an-->
+                     <thead>
+                         <tr>
+                             <th scope="col">Hardware</th>
+                             <th scope="col">Software</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                            <td><b>Components:</b><br>
+                                - Arduino Nano 33 IOT 2x<br>
+                                - 3.7 polymer Lithium Flat Battery <br>
+                                - Sparkfun Pulse Oximeter and Heart Rate Sensor - MAX30101<br>
+                            </td>
+                            <td>
+                                Libraries:<br>
+                               <b>I. For Arduino:</b><br>
+                                <br>
+                                1. Before the code runs some libraries have to be downloaded<br>
+                                - &ltAdafruit_MPU650.h&gt<br>
+                                - &ltAdafruit_Sensor.h&gt<br>
+                                - &ltSparkFun_Bio_Sensor_Hub_Library.h&gt<br>
+                                - &ltWire.h&gt<br>
+                                <br>
+                                2.Then you can download the Code from GitHub<br>
+                                <a href="https://github.com/D-Queck/SiderClip_Sensor"> Download the code here!</a><br>
+                                - Sparkfun Pulse Oximeter and Heart Rate Sensor<br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>3D Printing:</b><br>
+                                <!--Downloadlinks-->
+                                Vive Tracker 1.0 and Vive Tracker 2.0: <br>
+                                <a href="Deckel.stl">Cap</a><br>
+                                <a href="mainboard_V7.stl">Mainboard</a><br>
+                                <a href="Oberteil.stl">Top</a><br>
+                                <a href="Klammer Zeichnung v2.pdf">Drawing of Clip</a><br><br>
+                              
+                                Vive Tracker 3.0:<br>
+                                <a href="OberteilV3.stl">Top</a><br>
+                                <a href="Unterteil_1.stl">Clip 1</a><br>
+                                <a href="Unterteil_2.stl">Clip 2</a><br>
+                          
+                            </td>
+                            <td>
+                             
+                            </td>
+                         </tr>
+                         <tr>
+                             <td>
+                                <b> VR-Setup(HTC Vive)</b><br>
+                                 -HTC Vive hardwarecomponents<br>
+                                 -2 Basestations<br>
+                                 -HTC Vive Tracker V2 or V3<br>
+                                 -Vive tracker hand strap
+                             </td>
+                             <td>
+                                <b> For Unity:</b><br>
+                                 You'll need to download the SteamVR Asset before you can use the virtual watch:<br>
+                                 <a href="https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647">Download it here!</a><br>
+                                 <br>
+                                 Unity VR-Watch: 
+                                 You need to download the SDK, so you can use the VR-Wearable:<br> 
+                                 <a href="https://github.com/D-Queck/VR_Wearable_Spiderclip">You can use this link to do so.</a>
+
+                             </td>
+                     </tbody>
+                     </table>
+                     </div>
+                
+             
+             <hr>
+             
+             <div class="row pt-5 pb-4"><h2>1. Wiring Hardware Components</h2></div>
+             <img src="HardwarecomponentsNew.png" style="height: 650px; width:630px; padding-left: 200px;" >
+             
+             <div class="row pt-3 pb-5">
+              The Arduino Nano Every Board can be powered by a Micro-USB connector to the computer, a power supply or a 3.7 Lithium battery.<br>
+              The communication with the microcontroller for the heart rate sensors is done via the standardized I2C interface.
+            </div>
+             <hr>
+            <div class="row pt-5 pb-4"><h2>2. SpiderClip-Sensor Source Code</h2></div>
+             <div class="row pt-2 pb-2">
+                 In this chapter the source code for de Arduino is explained. The download link 
+                 to the source code can be found here: 
+              </div>
+                 
+                <div class= "row pb-3"><a href="https://github.com/D-Queck/SiderClip_Sensor">Download it here!</a></div>
+                <div class="row pb-3">
+                 First you have to download some libraries to make the source code work.<br>
+                 These libraries are: 
+                 <div class="row pt-3 pb-5"><ol>
+                   <li>&ltArduinoBLE.h&gt</li>
+                  <li>&ltArduino_LSM6DS3&gt</li>
+                  <li>&ltSparkFun_Bio_Sensor_Hub_Library.h&gt</li>
+                  <li>Wire.h (should be already installed)</li>
+              </ol>
+            </div>
+                 </div>
+                 <div class="row pb-3"><b>You can also take a look at the code here:</b> </div>
+                 <div class= "row pb-3"> 
+                  <button onclick="central()">Central &#709</button>
+                  <br>
+                   <code id ="cen" style ="display:none;">
+                    #include &ltArduinoBLE.h&gt<br><br>
+
+
+                      void setup() {        <br>
+                        Serial.begin(9600);
+                      //  while (!Serial);<br><br>
+                      
+                       
+                      
+                        // initialize the BLE hardware<br>
+                        BLE.begin();<br><br>
+                      
+                        Serial.println("BLE Central - LED control");<br><br>
+                      
+                        // start scanning for peripherals<br>
+                        BLE.scanForUuid("19b10000-e8f2-537e-4f6c-d104768a1214");<br>
+                      }<br><br>
+                      
+                      void loop() {<br>
+                        // check if a peripheral has been discovered<br>
+                        BLEDevice peripheral = BLE.available();<br><br>
+                      
+                        if (peripheral) {<br>
+                          // discovered a peripheral, print out address, local name, and advertised service<br>
+                          Serial.print("Found ");<br>
+                          Serial.print(peripheral.address());<br>
+                          Serial.print(" '");<br>
+                          Serial.print(peripheral.localName());<br>
+                          Serial.print("' ");<br>
+                          Serial.print(peripheral.advertisedServiceUuid());<br>
+                          Serial.println();<br><br>
+                      
+                          if (peripheral.localName() != "LED") {<br>
+                            return;<br>
+                          }<br>
+                      
+                          // stop scanning<br>
+                          BLE.stopScan();<br><br>
+                      
+                          controlLed(peripheral);<br><br>
+                      
+                          // peripheral disconnected, start scanning again<br>
+                          BLE.scanForUuid("19b10000-e8f2-537e-4f6c-d104768a1214");<br>
+                        }<br>
+                      }//END OF LOOP<br><br>
+                      
+                      void controlLed(BLEDevice peripheral) { //BLE FUNCTION<br>
+                        // connect to the peripheral<br>
+                        Serial.println("Connecting ...");<br><br>
+                      
+                        if (peripheral.connect()) {<br>
+                          Serial.println("Connected");<br>
+                        } else {<br>
+                          Serial.println("Failed to connect!");<br>
+                          return;<br>
+                        }<br><br>
+                      
+                        // discover peripheral attributes<br>
+                        Serial.println("Discovering attributes ...");<br>
+                        if (peripheral.discoverAttributes()) {<br>
+                          Serial.println("Attributes discovered");<br>
+                        } else {<br>
+                          Serial.println("Attribute discovery failed!");<br>
+                          peripheral.disconnect();<br>
+                          return;<br>
+                        }<br><br>
+                      
+                        // retrieve the LED characteristic<br>
+                        BLECharacteristic ConfidenceCharacteristic = peripheral.characteristic("19b10001-e8f2-537e-4f6c-d104768a1212");<br>
+                        BLECharacteristic OxygenCharacteristic = peripheral.characteristic("19b10001-e8f2-537e-4f6c-d104768a1213");<br>
+                        BLECharacteristic HrCharacteristic = peripheral.characteristic("19b10001-e8f2-537e-4f6c-d104768a1214");<br>
+                        BLECharacteristic AccxCharacteristic= peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1215");<br>
+                        BLECharacteristic AccyCharacteristic= peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1216");<br>
+                        BLECharacteristic AcczCharacteristic= peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1217");<br><br>
+                        
+                        if (!HrCharacteristic) {<br>
+                          Serial.println("Peripheral does not have LED characteristic!");<br>
+                          peripheral.disconnect();<br><br>
+                          return;
+                        } else if (!HrCharacteristic.canWrite()) {<br><br>
+                          Serial.println("Peripheral does not have a writable LED characteristic!");<br>
+                          peripheral.disconnect();<br><br><br>
+                          return;
+                        }
+                      
+                        while (peripheral.connected()) {<br>
+                          // while the peripheral is connected<br><br><br>
+                      
+                      
+                      
+                      float x,y,z =0;<br>
+                      int Hr=0;<br>
+                      int Confidence=0;<br>
+                      int Oxygen=0;<br><br>
+                      
+                      //READ THE CHARACTERISTICS HERE<br><br>
+                      HrCharacteristic.read();<br>
+                      ConfidenceCharacteristic.read();<br>
+                      ... (58 lines left)<br>
+                   </code>
+
+                   <script>
+                    
+                    function central(){
+                      var x = document.getElementById("cen");
+                      if (x.style.display === "none"){
+                        x.style.display = "block";
+                      } else {
+                        x.style.display = "none";
+                      }
+                    }
+                    </script>
+                  </div>
+                <div class="row pb-4">
+                 <button onclick="peripheral()">Peripheral &#709</button><br>
+                  <code id="per" style ="display:none;">
+                    #include &ltArduinoBLE.h&gt<br>
+                      #include &ltArduino_LSM6DS3.h&gt<br>
+                      #include &ltSparkFun_Bio_Sensor_Hub_Library.h&gt<br>
+                      #include &ltWire.h&gt<br><br>
+                      
+                      // Reset pin, MFIO pin<br>
+                      int resPin = 4;<br>
+                      int mfioPin = 5;<br>
+                      SparkFun_Bio_Sensor_Hub bioHub(resPin, mfioPin); <br>
+                      bioData body;  <br><br>
+                      
+                      BLEService ledService("19B10000-E8F2-537E-4F6C-D104768A1214"); // BLE LED Service<br><br>
+                      
+                      BLEIntCharacteristic ConfidenceCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1212", BLERead | BLEWrite);<br>
+                      BLEIntCharacteristic OxygenCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1213", BLERead | BLEWrite);<br>
+                      BLEIntCharacteristic HrCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1214", BLERead | BLEWrite);<br>
+                      BLEIntCharacteristic AccxCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1215", BLERead | BLEWrite);<br>
+                      BLEIntCharacteristic AccyCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1216", BLERead | BLEWrite);<br>
+                      BLEIntCharacteristic AcczCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1217", BLERead | BLEWrite);<br><br><br>
+                      
+                      
+                      void setup() {<br>
+                        Serial.begin(9600);<br>
+                        
+                        //HR INIT<br>
+                        Wire.begin();<br>
+                        int result = bioHub.begin();<br>
+                        int error = bioHub.configBpm(MODE_ONE);<br><br>
+                        
+                        //IMU INIT<br>
+                      if (!IMU.begin()) {<br>
+                          Serial.println("Failed to initialize IMU!");<br>
+                          while (1);}<br><br>
+                          
+                        // BLE initialization<br>
+                        if (!BLE.begin()) {<br>
+                          Serial.println("starting BLE failed!");<br>
+                          while (1);<br>
+                        }<br><br>
+                      
+                        // set advertised local name and service UUID:<br>
+                        BLE.setLocalName("LED");<br>
+                        BLE.setAdvertisedService(ledService);<br><br>
+                      
+                        // add the characteristic to the service<br>
+                        ledService.addCharacteristic(HrCharacteristic);<br>
+                        ledService.addCharacteristic(ConfidenceCharacteristic);<br>
+                        ledService.addCharacteristic(OxygenCharacteristic);<br>
+                        ledService.addCharacteristic(AccxCharacteristic);<br>
+                        ledService.addCharacteristic(AccyCharacteristic);<br>
+                        ledService.addCharacteristic(AcczCharacteristic);<br><br>
+                      
+                        // add service<br>
+                        BLE.addService(ledService);<br><br>
+                      
+                        // set the initial value for the characeristic:<br>
+                        HrCharacteristic.writeValue(0);<br>
+                        OxygenCharacteristic.writeValue(0);<br>
+                        ConfidenceCharacteristic.writeValue(0);<br>
+                        AccxCharacteristic.writeValue(0);<br>
+                        AccyCharacteristic.writeValue(0);<br>
+                        AcczCharacteristic.writeValue(0);<br><br>
+                      
+                        // start advertising<br>
+                        BLE.advertise();<br><br>
+                      
+                        Serial.println("BLE LED Peripheral");<br>
+                        delay(2000); //for the HR<br>
+                      }<br><br>
+                      
+                      void loop() {<br><br>
+                    
+                        
+                        // listen for BLE peripherals to connect:<br>
+                        BLEDevice central = BLE.central();<br><br>
+                      
+                        // if a central is connected to peripheral:<br>
+                        if (central) {<br>
+                          Serial.print("Connected to central: ");<br>
+                          // print the central's MAC address:<br>
+                          Serial.println(central.address());<br><br>
+                      
+                          // while the central is still connected to peripheral:<br>
+                          while (central.connected()) {<br><br>
+                      
+                          //HR<br>
+                          body = bioHub.readBpm();<br><br>
+                          
+                          //ACC START<br>
+                            float x, y, z; //for Acc<br><br>
+                            
+                        if (IMU.accelerationAvailable()) {<br>
+                          IMU.readAcceleration(x, y, z);<br>
+                          int intx, inty ,intz;<br>
+                            intx = (int) (x*1000); //send them as ints then restoring them to float on the other device<br>
+                            inty = (int) (y*1000);<br>
+                      ... (19 lines left)
+                  </code>
+                  <script>
+                    
+                    function peripheral(){
+                      var x = document.getElementById("per");
+                      if (x.style.display === "none"){
+                        x.style.display = "block";
+                      } else {
+                        x.style.display = "none";
+                      }
+                    }
+                    </script>
+                </div>
+                <hr>
+             <div class="row pt-5 pb-4"><h2>3. 3D-Construction SpiderClip</h2></div>
+             <div class="row pt-2">
+                The concept of SpiderClip is that the assembled components
+                can be attached to the Vive tracker and thus merge with it hardware-wise into a unified device. This case consists of three parts
+                and offers space for all selected hardware components. The 3
+                components have to be printed individually with a common 3D
+                printer. To attach them to each other you can either use glue or you can screw the parts together.<br>
+             </div>
+             <div class="row pt-3 pb-3"><img src="Explo_02.png" class="img-fluid"></div>
+             <div class="row pt-3 pb-3"><img src="Explo_01.png" class="img-fluid"></div>
+
+             <div class="row pb-5">
+                At this point it is important to mention that the components
+                should not be assembled yet. The „marriage“ of the hardware
+                components and the 3D printed parts will be explained in the
+                next chapter.
+             </div>
+             <hr>
+             <div class="row pt-5 pb-4"><h2>4. Fusion 3D-Printed Assebliies and Hardware Components</h2></div>
+             <div class="row pb-5">
+                First, the Arduino Nano Every, the breadboard and the MPU6050 IMU must be glued to the bracket board using glue and a
+                hot glue gun.
+                <br>
+                <br>
+                Next, the „top“ element can be attached to the bracket board
+                (See exploded view).
+                <br>
+                <br>
+                After that, the HC-05 module can be plugged into the recess of
+                the „Top“ element.
+                <br>
+                <br>
+                Finally, the „Protective Cover“ element is glued onto the „Top“
+                element
+             </div>
+             <hr>
+             <div class="row pt-5 pb-4"><h2>5. SetUp SpiderClip and Unity Implementation</h2></div>
+             <div class="row pb-3">
+                After loading the source code on the Arduino board and assembling all hardware components, the Spider Clip can be attached to
+                the Vive Tracker.  
+             </div>
+            <div class="row pt-3 pb-3"><img src="Spiderclipassembled2.jpeg" class="img-fluid"></div>
+             <div class="row pt-2">
+                With this step, the preparation of the SpiderClip hardware components is finished and we can now download the virtual wearable.<br><br>
+                The download link to the wearable can be found here:
+                <br>
+                <a href="https://github.com/D-Queck/VR_Wearable_SpiderClip">https://github.com/D-Queck/VR_Wearable_SpiderClip</a>
+             </div>
+             <div class="row pt-3 pb-3"><img src="UI_SmartWatchLog_Timer_cuted.png" class="img-fluid"></div>
+             <div class="row pt-2 pb-5">
+                In the next section, I‘ll show you how the Unity Asset works for the
+                wearable.
+             </div>
+             <hr>
+            <div class="row pt-5 pb-4"><h2>6. Unity MR-Wearable Asset</h2></div>
+             <div class="row pt-2">
+                This section explains the virtual wearable for Unity. Figure xy shows
+                the wearable in a virtual training environment. The wearable is based
+                on the SteamVR PlugIn, which is required for functionality. However,
+                the wearable can be implemented in any Set Up.
+             </div>
+             <div class="row pb-4 pt-3"><img src="VW.jpg" class="img-fluid"></div>
+             <div class="row pt-3 pb-3">
+                An important part of the plug-in is the Serial- Com script which uses the NuGet package Sys- tem.IO 
+                which provides communication over the serial port of the PC.
+                The script handles all input parameters coming from the wearable 
+                and is the basis for the parameters displayed from the Dsahboard.
+             </div>
+             <div class="row pb-3">
+                The wearable is attached to the Player Prefab of the SteamVR plugin and 
+                localizes itself via the HTC Vive Tracker. It includes a TimeMana- ger that
+                displays the time and all WatchVR Ga- meObject + Dashboard.
+             </div>
+             <div class="row pt-2 pb-5">
+             <div id="carouselExampleControls" class="carousel slide pt-2" data-bs-ride="carousel"> <!-- mit Carousel kann man durch Bilder durchscollen-->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="Capture2.png" class="mx-auto d-block">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="Capture.png" class="mx-auto d-block">
+                  </div>
+                  </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <footer class="text-center text-lg-start bg-light text-muted pt-5"> <!--Impressum-->
+                <!-- Section: Social media -->
+                <section
+                  class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+                >
+                  <!-- Left 
+                  <div class="me-5 d-none d-lg-block">
+                    <span>Get connected with us on social networks:</span>
+                  </div>
+                  <div>
+                    <a href="" class="me-4 text-reset">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                      <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                      <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                      <i class="fab fa-github"></i>
+                    </a>
+                  </div>
+                   -->
+                </section>
+                <!-- Section: Social media -->
+              
+                <!-- Section: Links  -->
+                <section class="">
+                  <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                      <!-- Grid column -->
+                      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!--Name des Unternehmens -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                          Company Name
+                        </h6>
+                        <p>
+                          TU-Kaiserslautern, Serious Games Engineering
+                        </p>
+                      </div>
+                      <!-- Grid column -->
+                      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!--Auflistung der Autoren-->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                          Authors
+                        </h6>
+                        <p>
+                          Dirk Queck
+                        </p>
+                        <p>
+                          Youssef Abdelghany
+                        </p>
+                      </div>
+                      <!-- Grid column -->
+                      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                          Useful links
+                        </h6>
+                        <p>
+                          <a href="https://sge.eit.uni-kl.de/startseite" class="text-reset">SGE Website</a>
+                        </p>
+                      </div>
+                      <!-- Grid column -->
+                      <!-- Grid column -->
+                      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                      
+                        <h6 class="text-uppercase fw-bold mb-4">
+                          Contact
+                        </h6>
+                        <div class="row" style="font-size: 12px;">
+                         Dirk Queck<br>
+                         Office: 11/564<br>
+                         E-Mail: queck@eit.uni-kl.de<br>
+                         Telefon: +49 631 / 205 - 2090<br>
+                      </div>
+                      </div>
+                      <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                  </div>
+                </section>
+                <!-- Section: Links  -->
+              
+                <!-- Copyright -->
+                <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                  © 2022 Copyright:
+                  <a class="text-reset fw-bold" href="">Friederike Hoen; Dirk Queck</a>
+                </div>
+                <!-- Copyright -->
+              </footer>
+        </body>
+    </html>
