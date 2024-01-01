@@ -162,14 +162,16 @@
                      </tbody>
                      </table>
                      </div>
-                
-             
              <hr>
              
              <div class="row pt-5 pb-4"><h2>1. Wiring Hardware Components</h2></div>
-             <img src="HardwarecomponentsNew.png" style="height: 650px; width:630px; padding-left: 200px;" >
+             <img src="Schaltplan_Neu.png" class="img-fluid">
              
              <div class="row pt-3 pb-5">
+              Arduino Nano 33 IoT (3.7V) is connected to a Sparkfun Bio Sensor via I2C (SCL, SDA). Both share a common 3.7V power source. 
+              The Arduino Nano 33 IoT acts as a master and controls the Bio Sensor while receiving data.
+              <br>
+              <br>
               The Arduino Nano Every Board can be powered by a Micro-USB connector to the computer, a power supply or a 3.7 Lithium battery.<br>
               The communication with the microcontroller for the heart rate sensors is done via the standardized I2C interface.
             </div>
@@ -435,6 +437,15 @@
              <div class="row pt-3 pb-3"><img src="SpiderClipGrid.png" class="img-fluid"></div>
 
              <div class="row pb-5">
+                Top row: Prototype, with HTC Vive Tracking System 1.0 support. 
+                Top left: Prototype, IMU and Bluetooth as separate system components. 
+                The system can be attached to the tracker with a clip mechanism. 
+                Top right: Exploded view of the prototype. Bottom row: Plug-and-screw system: 
+                Support for HTC Vive Tracking System 2.0 and 3.0 assembly with integrated 
+                battery (yellow) and cut-out for tracking support. Bottom right: 
+                Exploded view, individual housing components and battery integration.
+                <br>
+                <br>
                 At this point it is important to mention that the components
                 should not be assembled yet. The „marriage“ of the hardware
                 components and the 3D printed parts will be explained in the
