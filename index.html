@@ -1,42 +1,58 @@
 <!Doctype html>
     <html>
-        <head>
 
+      <!---------------------------------------------  HEADER -------------------------------------------------->
+        <head>
             <meta charset="utf-8">
             <title>spiderclipVR</title>
-
-             <!-- Bootstrap css -->
-             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
+            <!-- Bootstrap css -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
             <!-- Bootstrap js -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
             <!--Bootstrap-->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
             <meta name="viewport" content="width=device-width, initial-scale=1">
-
         </head>
 
+
+
+      <!---------------------------------------------  STYLE -------------------------------------------------->
         <style>
             @media (min-width: 1024px){
                 body{
-
                     font-family: Calibri, Arial, serif; /*Schriftart der Seite*/
-                    background-color: rgb(245, 245, 245); /*Hintergrundfarbe außerhalb des Containers*/
+                    color: rgb(182, 182, 182); /* Schriftfarbe auf Weiß ändern */
+                    background-color: rgb(20, 20, 20); /*Hintergrundfarbe außerhalb des Containers*/
                     padding: 0 15rem 0 15rem; /*padding des Hintergrundes, um Container eine Größe zu geben*/
                 }
             }
             th {
               /*Eigenschaften der Tabellenkopfes*/
-                border-bottom: 2px black solid;
-                border-left: 2px black solid;
+                border-bottom: 2px rgb(180, 180, 180) solid;
+                border-left: 2px rgb(180, 180, 180) solid;
             }
             /*Eigenschaften der Tabelle*/
-            table td + td { border-left: 2px black solid;}
+            table td + td { border-left: 2px rgb(180, 180, 180) solid;}
             table {
-                border: 2px black solid;
+                border: 2px rgb(180, 180, 180) solid;
             }
+            .custom-table {
+            width: 60%; /* Ändern Sie die Breite nach Bedarf */
+            display: flex;
+            margin: 20px auto;/* Zentrierung der Tabelle */
+            justify-content: space-between; /* Abstand zwischen den Tabellen */
+            }
+
+
+            .custom-image {
+            width: 100%; /* Breite auf 100% setzen */
+            height: auto; /* Automatische Anpassung der Höhe */
+            }
+            .custom-image-container {
+            width: 60%; /* Ändern Sie die Breite nach Bedarf */
+            margin: 0 auto; /* Zentrierung des Containers */
+            }
+
             /* Eigenschaften des Carousels*/
             .carousel .carousel-item {
                 height: 500px;
@@ -50,14 +66,19 @@
             }
         </style>
 
+
+
+
+    <!---------------------------------------------  BODY -------------------------------------------------->
         <body>
-            <div class="container px-5 bg-white" > <!--Inhalt der Seite befindet sich in weißem Container-->
+            <div class="container px-5 bg-black" > <!--Inhalt der Seite befindet sich in weißem Container-->
+            <br>
+            <br>
             <div class="row"><h1 class="text-center">SpiderClip: Towards an Open Source System for wearable Device Simulation in Virtual Reality</h1></div>
+            <br>
            <div class="row pb-5"><h5 class="text-center">Autoren: Dirk Queck, Phillip Zimmer, Nicole Burkard, Iannis Albert, Georg Volkmar, Bastian Dänekas, Rainer Malaka, Marc Herrlich</h5></div>
-
-           <div class="row pb-3"> <img src= "LogoLine.png" class="img-fluid"></div>
-
-                <div class="row pb-3"> <img src= "TeaserPicpng (2).png" class="img-fluid"></div> <!--responsiveness durch div Klasse row, deshalb befindet sich diese um jedes Element der Seite; durch img-fluid werden alle Bilder responsive-->
+                <!---------------------------------------------  Teaser Pic -------------------------------------------------->
+                <div class="row pb-3"> <img src= "TeaserPicpng_Black.png" class="img-fluid"></div> <!--responsiveness durch div Klasse row, deshalb befindet sich diese um jedes Element der Seite; durch img-fluid werden alle Bilder responsive-->
                  <div class="row">
                   ACKNOWLEDGMENTS:
                   This work was partially supported by the German Research Foundation (DFG) within the priority program “Scalable Interaction
@@ -67,7 +88,12 @@
                   “AI Enhanced Cognition and Learning” and the graduate program
                   “Cognitive Dynamics” both at TU Kaiserslautern.</br>
                   </br>
-                  SPIDERCLIP:
+                  <hr> <!--Striche um die Absätze voneinander zu trennen-->
+
+
+                <!---------------------------------------------  What is SpiderClip -------------------------------------------------->
+                 <div class="row pt-5"><h2>What is SpiderClip?</h2></div>
+                  </br>
                   Smartwatches and fitness trackers integrate different sensors from
                   inertial measurement units to heart rate sensors in a very compact
                   and affordable form factor. This makes them interesting and relevant
@@ -79,93 +105,114 @@
                   systems. We address these issues with an open source design to
                   facilitate the construction of VR-enabled wearables for conducting
                   scientific experiments. 
-                 <div class="row pb-5"><center><video width="400" height="300" controls>
+                 <div class="row pb-5"><center><video width="800" height="600" controls>
                      <source src="SpiderClip_high_2 Kopie.mp4" type="video/mp4" media="all and (min-width: 60em)">
                  </video></center></div>
                  <!--pb = Abstand nach unten, pt = Abstand nach oben-->
 
                  <hr> <!--Striche um die Absätze voneinander zu trennen-->
                  
-            
+
+            <!--------------------------------------------- 0. What You Need -------------------------------------------------->
              <div class="row pt-5"><h2>0. What you need?</h2></div>
              <div class="row pt-4 pb-2">
                  This section covers all the materials to assemble the SpiderClip Prototype. You will need various hardwarecomponents, 
                  a 3D printer, glue or screws and various software components. </div>
-             <div class="row pb-5 pt-2">
-                <table class="table-responsive"> <!--Tabelle passt sich durch responsive beim Verkleinern des Fensters der Seite an-->
-                     <thead>
-                         <tr>
-                             <th scope="col">Hardware</th>
-                             <th scope="col">Software</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         <tr>
-                            <td><b>Components:</b><br>
-                                - Arduino Nano 33 IOT 2x<br>
-                                - 3.7 polymer Lithium Flat Battery <br>
-                                - Sparkfun Pulse Oximeter and Heart Rate Sensor - MAX30101<br>
-                            </td>
-                            <td>
-                                Libraries:<br>
-                               <b>I. For Arduino:</b><br>
-                                <br>
-                                1. Before the code runs some libraries have to be downloaded<br>
-                                - &ltAdafruit_MPU650.h&gt<br>
-                                - &ltAdafruit_Sensor.h&gt<br>
-                                - &ltSparkFun_Bio_Sensor_Hub_Library.h&gt<br>
-                                - &ltWire.h&gt<br>
-                                <br>
-                                2.Then you can download the Code from GitHub<br>
-                                <a href="https://github.com/D-Queck/SiderClip_Sensor"> Download the code here!</a><br>
-                                - Sparkfun Pulse Oximeter and Heart Rate Sensor<br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <b>3D Printing:</b><br>
-                                <!--Downloadlinks-->
-                                Vive Tracker 1.0 and Vive Tracker 2.0: <br>
-                                <a href="Deckel.stl">Cap</a><br>
-                                <a href="mainboard_V7.stl">Mainboard</a><br>
-                                <a href="Oberteil.stl">Top</a><br>
-                                <a href="Klammer Zeichnung v2.pdf">Drawing of Clip</a><br><br>
-                              
-                                Vive Tracker 3.0:<br>
-                                <a href="OberteilV3.stl">Top</a><br>
-                                <a href="Unterteil_1.stl">Clip 1</a><br>
-                                <a href="Unterteil_2.stl">Clip 2</a><br>
-                          
-                            </td>
-                            <td>
-                             
-                            </td>
-                         </tr>
-                         <tr>
-                             <td>
-                                <b> VR-Setup(HTC Vive)</b><br>
-                                 -HTC Vive hardwarecomponents<br>
-                                 -2 Basestations<br>
-                                 -HTC Vive Tracker V2 or V3<br>
-                                 -Vive tracker hand strap
-                             </td>
-                             <td>
-                                <b> For Unity:</b><br>
-                                 You'll need to download the SteamVR Asset before you can use the virtual watch:<br>
-                                 <a href="https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647">Download it here!</a><br>
-                                 <br>
-                                 Unity VR-Watch: 
-                                 You need to download the SDK, so you can use the VR-Wearable:<br> 
-                                 <a href="https://github.com/D-Queck/VR_Wearable_Spiderclip">You can use this link to do so.</a>
+             <div class="row pb-5 pt-2">               
+                     
+              <!-- Tabelle für Hardware -->
+              <table class="table-responsive custom-table">
+                      <thead>
+                          <tr>
+                              <th scope="col">Hardware</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td><b>Components:</b><br>
+                                  Arduino Nano 33 IOT 2x<br>
+                                  3.7 polymer Lithium Flat Battery <br>
+                                  Sparkfun Bio Sensor Hub with Pulse Oximeter and Heart Rate Sensor<br><br>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <b>3D Printing:</b><br>
+                                  <!--Downloadlinks-->
+                                  Vive Tracker 1.0 and Vive Tracker 2.0: <br>
+                                  <a href="Deckel.stl">Cap</a><br>
+                                  <a href="mainboard_V7.stl">Mainboard</a><br>
+                                  <a href="Oberteil.stl">Top</a><br>
+                                  <a href="Klammer Zeichnung v2.pdf">Drawing of Clip</a><br>
+          
+                                  Vive Tracker 3.0:<br>
+                                  <a href="OberteilV3.stl">Top</a><br>
+                                  <a href="Unterteil_1.stl">Clip 1</a><br>
+                                  <a href="Unterteil_2.stl">Clip 2</a><br><br>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <b> VR-Setup(HTC Vive)</b><br>
+                                  HTC Vive hardwarecomponents<br>
+                                  2 Basestations<br>
+                                  HTC Vive Tracker V2 or V3<br>
+                                  Vive Tracker hand strap
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+          
+                  
 
-                             </td>
-                     </tbody>
-                     </table>
+                  <!-- Tabelle für Software -->
+                  <table class="table-responsive custom-table">
+                      <thead>
+                          <tr>
+                              <th scope="col">Software</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td><b>For Arduino:</b><br>
+                                  Before the code runs some libraries have to be downloaded<br>
+                                  &ltAdafruit_MPU650.h&gt<br>
+                                  &ltAdafruit_Sensor.h&gt<br>
+                                  &ltSparkFun_Bio_Sensor_Hub_Library.h&gt<br>
+                                  &ltWire.h&gt<br>
+
+                                  Then you can download the Code from GitHub<br>
+                                  <a href="https://github.com/D-Queck/SiderClip_Sensor"> Download the code here!</a><br>
+                                  Sparkfun Pulse Oximeter and Heart Rate Sensor<br><br>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <b>For Unity:</b><br>
+                                  You'll need to download the SteamVR Asset before you can use the virtual watch:<br>
+                                  <a href="https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647">Download it here!</a><br>
+                                  Unity VR-Watch: 
+                                  You need to download the SDK, so you can use the VR-Wearable:<br> 
+                                  <a href="https://github.com/D-Queck/VR_Wearable_Spiderclip">You can use this link to do so.</a>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+
                      </div>
              <hr>
              
+
+             <!--------------------------------------------- 1. Wiring Hardware -------------------------------------------------->
              <div class="row pt-5 pb-4"><h2>1. Wiring Hardware Components</h2></div>
-             <img src="Schaltplan_Neu.png" class="img-fluid">
+
+            <!-- NEW PICTURE DEFINITION -->
+            <div class="row pt-3 pb-3">
+              <div class="col-md-6 custom-image-container">
+                <img src="Wiring_White.png" class="img-fluid custom-image">
+              </div>
+            </div>
              
              <div class="row pt-3 pb-5">
               Arduino Nano 33 IoT (3.7V) is connected to a Sparkfun Bio Sensor via I2C (SCL, SDA). Both share a common 3.7V power source. 
@@ -176,6 +223,9 @@
               The communication with the microcontroller for the heart rate sensors is done via the standardized I2C interface.
             </div>
              <hr>
+
+
+             <!--------------------------------------------- 2. Spider Clip Source Code -------------------------------------------------->
             <div class="row pt-5 pb-4"><h2>2. SpiderClip-Sensor Source Code</h2></div>
              <div class="row pt-2 pb-2">
                  In this chapter the source code for de Arduino is explained. The download link 
@@ -434,7 +484,13 @@
                 components have to be printed individually with a common 3D
                 printer. To attach them to each other you can either use glue or you can screw the parts together.<br>
              </div>
-             <div class="row pt-3 pb-3"><img src="SpiderClipGrid.png" class="img-fluid"></div>
+
+            <!-- NEW PICTURE DEFINITION -->
+            <div class="row pt-3 pb-3">
+              <div class="col-md-6 custom-image-container">
+                <img src="SpiderClipGrid.png" class="img-fluid custom-image">
+              </div>
+            </div>
 
              <div class="row pb-5">
                 Top row: Prototype, with HTC Vive Tracking System 1.0 support. 
@@ -475,8 +531,18 @@
                 After loading the source code on the Arduino board and assembling all hardware components, the Spider Clip can be attached to
                 the Vive Tracker.  
              </div>
-            <div class="row pt-3 pb-3"><img src="Spiderclipassembled2.jpeg" class="img-fluid"></div>
-             <div class="row pt-2">
+
+
+            <!-- NEW PICTURE DEFINITION -->
+            <div class="row pt-3 pb-3">
+              <div class="col-md-6 custom-image-container">
+                <img src="Spiderclipassembled2.jpeg" class="img-fluid custom-image">
+              </div>
+            </div>
+            
+            
+            
+            <div class="row pt-2">
                 With this step, the preparation of the SpiderClip hardware components is finished and we can now download the virtual wearable.<br><br>
                 The download link to the wearable can be found here:
                 <br>
@@ -527,36 +593,11 @@
                 </button>
               </div>
             </div>
-            <footer class="text-center text-lg-start bg-light text-muted pt-5"> <!--Impressum-->
+
+
+            <footer class="text-center text-lg-start bg-dark text-muted pt-5"> <!--Impressum-->
                 <!-- Section: Social media -->
-                <section
-                  class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-                >
-                  <!-- Left 
-                  <div class="me-5 d-none d-lg-block">
-                    <span>Get connected with us on social networks:</span>
-                  </div>
-                  <div>
-                    <a href="" class="me-4 text-reset">
-                      <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                      <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                      <i class="fab fa-google"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                      <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                      <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                      <i class="fab fa-github"></i>
-                    </a>
-                  </div>
-                   -->
+                <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                 </section>
                 <!-- Section: Social media -->
               
@@ -643,3 +684,77 @@
               </footer>
         </body>
     </html>
+
+
+
+
+                <!-- ------------------------ old stuff ------------------------------------- 
+             <table class="table-responsive custom-table">
+                     <thead>
+                         <tr>
+                             <th scope="col">Hardware</th>
+                             <th scope="col">Software</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                            <td><b>Components:</b><br>
+                                #Arduino Nano 33 IOT 2x<br>
+                                #3.7 polymer Lithium Flat Battery <br>
+                                #Sparkfun Bio Sensor Hub with Pulse Oximeter and Heart Rate Sensor<br>
+                            </td>
+                            <td>
+                                Libraries:<br>
+                               <b>I. For Arduino:</b><br>
+                                <br>
+                                1. Before the code runs some libraries have to be downloaded<br>
+                                - &ltAdafruit_MPU650.h&gt<br>
+                                - &ltAdafruit_Sensor.h&gt<br>
+                                - &ltSparkFun_Bio_Sensor_Hub_Library.h&gt<br>
+                                - &ltWire.h&gt<br>
+                                <br>
+                                2.Then you can download the Code from GitHub<br>
+                                <a href="https://github.com/D-Queck/SiderClip_Sensor"> Download the code here!</a><br>
+                                - Sparkfun Pulse Oximeter and Heart Rate Sensor<br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>3D Printing:</b><br>
+                                Vive Tracker 1.0 and Vive Tracker 2.0: <br>
+                                <a href="Deckel.stl">Cap</a><br>
+                                <a href="mainboard_V7.stl">Mainboard</a><br>
+                                <a href="Oberteil.stl">Top</a><br>
+                                <a href="Klammer Zeichnung v2.pdf">Drawing of Clip</a><br><br>
+                              
+                                Vive Tracker 3.0:<br>
+                                <a href="OberteilV3.stl">Top</a><br>
+                                <a href="Unterteil_1.stl">Clip 1</a><br>
+                                <a href="Unterteil_2.stl">Clip 2</a><br>
+                          
+                            </td>
+                            <td>
+                             
+                            </td>
+                         </tr>
+                         <tr>
+                             <td>
+                                <b> VR-Setup(HTC Vive)</b><br>
+                                 -HTC Vive hardwarecomponents<br>
+                                 -2 Basestations<br>
+                                 -HTC Vive Tracker V2 or V3<br>
+                                 -Vive tracker hand strap
+                             </td>
+                             <td>
+                                <b> For Unity:</b><br>
+                                 You'll need to download the SteamVR Asset before you can use the virtual watch:<br>
+                                 <a href="https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647">Download it here!</a><br>
+                                 <br>
+                                 Unity VR-Watch: 
+                                 You need to download the SDK, so you can use the VR-Wearable:<br> 
+                                 <a href="https://github.com/D-Queck/VR_Wearable_Spiderclip">You can use this link to do so.</a>
+
+                             </td>
+                     </tbody>
+                     </table>
+                    -->
