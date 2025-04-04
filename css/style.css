@@ -65,3 +65,16 @@ margin: 0 auto; /* Zentrierung des Containers */
 .carousel-control-next,.carousel-control-prev{
     filter: invert(100%)
 }
+
+header, .navbar {
+    z-index: 1050;
+  }  
+
+.navbar.blurred {
+background-color: rgba(0, 0, 0, 0.8);  /* Erhöhe die Deckkraft, damit der Effekt sichtbar bleibt */
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+z-index: 1050; /* Sicherstellen, dass die Navbar immer oben bleibt */
+}
+
