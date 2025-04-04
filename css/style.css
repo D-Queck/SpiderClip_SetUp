@@ -1,0 +1,55 @@
+
+@media (min-width: 1024px){
+    body{
+        font-family: Calibri, Arial, serif; /*Schriftart der Seite*/
+        color: rgb(182, 182, 182); /* Schriftfarbe auf Weiß ändern */
+        background-color: rgb(20, 20, 20); /*Hintergrundfarbe außerhalb des Containers*/
+        padding: 0 15rem 0 15rem; /*padding des Hintergrundes, um Container eine Größe zu geben*/
+    }
+}
+th {
+    /*Eigenschaften der Tabellenkopfes*/
+    border-bottom: 2px rgb(180, 180, 180) solid;
+    border-left: 2px rgb(180, 180, 180) solid;
+}
+/*Eigenschaften der Tabelle*/
+table td + td { border-left: 2px rgb(180, 180, 180) solid;}
+table {
+    border: 2px rgb(180, 180, 180) solid;
+}
+.custom-table {
+width: 60%; /* Ändern Sie die Breite nach Bedarf */
+display: flex;
+margin: 20px auto;/* Zentrierung der Tabelle */
+justify-content: space-between; /* Abstand zwischen den Tabellen */
+}
+
+button {
+    background-color: #0044fd; /* Hintergrundfarbe des Buttons */
+    color: white; /* Textfarbe des Buttons */
+    padding: 10px 10px; /* Innenabstand des Buttons (oben/unten, links/rechts) */
+    font-size: 16px; /* Schriftgröße des Buttons */
+    border: none; /* Kein Rahmen um den Button */
+    cursor: pointer; /* Zeiger beim Überfahren des Buttons */
+}
+
+.custom-image {
+width: 100%; /* Breite auf 100% setzen */
+height: auto; /* Automatische Anpassung der Höhe */
+}
+.custom-image-container {
+width: 60%; /* Ändern Sie die Breite nach Bedarf */
+margin: 0 auto; /* Zentrierung des Containers */
+}
+
+/* Eigenschaften des Carousels*/
+.carousel .carousel-item {
+    height: 500px;
+}
+.carousel-item img{
+    object-fit: cover;
+    height: 100%;
+}
+.carousel-control-next,.carousel-control-prev{
+    filter: invert(100%)
+}
