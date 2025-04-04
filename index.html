@@ -56,7 +56,7 @@
 
 
 <!-- About-Bereich mit mehr Abstand unter der Überschrift -->
-<section id="about" class="section py-5" style="position: relative; background: url('images/Background-About.png') no-repeat center center; background-size: cover; min-height: 600px;">
+<section id="about" class="section py-5" style="position: relative; background: url('images/Background-About.png') no-repeat center center; background-size: cover; min-height: 800px;">
   <!-- Overlay, um den Text vom Hintergrund abzuheben -->
   <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"></div>
   <div class="container" style="position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center; min-height: 600px;">
@@ -101,57 +101,71 @@
 
 
     
-<!-- System-Bereich -->
-<section id="system" class="section py-5" style="background-color: #141414;">
-  <div class="container">
-    <!-- Überschrift "System" -->
-    <div class="row mb-4">
-      <div class="col-12 text-center text-light">
-        <h1>System</h1>
-      </div>
-    </div>
-    <!-- Unterüberschrift -->
-    <div class="row mb-5">
-      <div class="col-12 text-center text-light">
-        <h3>The system consists of three subsystems: a Hardware Sensor Platform, a Communication Interface, and a VR-Wearable.</h3>
-      </div>
-    </div>
-    <!-- Drei Cards nebeneinander -->
-    <div class="row">
-      <!-- Card 1: Hardware Sensor Platform -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <!-- Optional: Bild der Card -->
-          <img src="images/card1.png" class="card-img-top" alt="Hardware Sensor Platform">
-          <div class="card-body">
-            <h5 class="card-title">Hardware Sensor Platform</h5>
-            <p class="card-text">Description text for the hardware sensor platform.</p>
+    <section id="system" class="py-5" style="
+  position: relative;
+  background: url('images/Background-System.png') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh;
+  border-radius: 30px;
+  overflow: hidden;
+  max-width: 95%;
+">
+
+      <!-- Overlay für bessere Lesbarkeit -->
+      <div style="position: absolute; inset: 0"></div>
+    
+      <div class="container position-relative" style="z-index: 2;">
+        <!-- Überschrift -->
+        <!-- Überschrift "About" mit extra margin -->
+        <div class="row mb-5">
+          <div class="col-12 text-center text-light" style="margin-top: 40px;">
+            <h1>System</h1>
+          </div>
+        </div>
+    
+        <!-- Unterüberschrift -->
+        <div class="row mb-5">
+          <div class="col-12 text-center text-light">
+            <h4>The system consists of three subsystems: a Hardware Sensor Platform, a Communication Interface, and a VR-Wearable.</h4>
+          </div>
+        </div>
+    
+        <!-- Cards -->
+        <div class="row text-center">
+          <!-- Card 1 -->
+          <div class="col-md-4 mb-4">
+            <div class="glass-card p-4">
+              <div class="mb-3">
+                <img src="images/icon1.svg" alt="Hardware Icon" width="50">
+              </div>
+              <h5 class="text-white">Hardware Sensor Platform</h5>
+              <p class="text-light small">Captures biometric and motion data through integrated sensors, designed for real-time streaming.</p>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col-md-4 mb-4">
+            <div class="glass-card p-4">
+              <div class="mb-3">
+                <img src="images/icon2.svg" alt="Communication Icon" width="50">
+              </div>
+              <h5 class="text-white">Communication Interface</h5>
+              <p class="text-light small">Provides wireless BLE communication to relay data efficiently between hardware and host system.</p>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="col-md-4 mb-4">
+            <div class="glass-card p-4">
+              <div class="mb-3">
+                <img src="images/icon3.svg" alt="VR Icon" width="50">
+              </div>
+              <h5 class="text-white">VR-Wearable</h5>
+              <p class="text-light small">An interactive VR model for data visualization and simulation within immersive training setups.</p>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Card 2: Communication Interface -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <img src="images/card2.png" class="card-img-top" alt="Communication Interface">
-          <div class="card-body">
-            <h5 class="card-title">Communication Interface</h5>
-            <p class="card-text">Description text for the communication interface.</p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 3: VR-Wearable -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <img src="images/card3.png" class="card-img-top" alt="VR-Wearable">
-          <div class="card-body">
-            <h5 class="card-title">VR-Wearable</h5>
-            <p class="card-text">Description text for the VR-wearable.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
+    
 
 
 
