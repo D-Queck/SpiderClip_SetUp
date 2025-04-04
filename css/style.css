@@ -5,7 +5,7 @@ html {
 
 @media (min-width: 1024px){
     body{
-        font-family: Calibri, Arial, serif; /*Schriftart der Seite*/
+        font-family: 'Inter', sans-serif;
         color: rgb(182, 182, 182); /* Schriftfarbe auf Weiß ändern */
         background-color: rgb(20, 20, 20); /*Hintergrundfarbe außerhalb des Containers*/
         padding: 0 15rem 0 15rem; /*padding des Hintergrundes, um Container eine Größe zu geben*/
