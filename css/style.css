@@ -101,6 +101,19 @@ z-index: 1050; /* Sicherstellen, dass die Navbar immer oben bleibt */
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
     border-color: rgba(255, 255, 255, 0.2);
   }
+
+
+  .spacer {
+    display: block;
+    width: 100%;
+    background: transparent;
+  }
+  
+  /* Variationen für unterschiedliche Höhen */
+  .spacer-sm { height: 20px; }
+  .spacer-md { height: 40px; }
+  .spacer-lg { height: 60px; }
+  
   
   
 
