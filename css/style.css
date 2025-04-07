@@ -54,6 +54,11 @@ width: 60%; /* Ändern Sie die Breite nach Bedarf */
 margin: 0 auto; /* Zentrierung des Containers */
 }
 
+.text-muted-light {
+    color: rgba(200, 200, 200, 0.7);
+  }
+  
+
 /* Eigenschaften des Carousels*/
 .carousel .carousel-item {
     height: 500px;
@@ -79,19 +84,25 @@ z-index: 1050; /* Sicherstellen, dass die Navbar immer oben bleibt */
 }
 
 .glass-card {
-    background: rgba(0, 17, 255, 0.05);
+    background: linear-gradient(135deg, rgba(76, 74, 219, 0.438), rgba(16, 140, 255, 0.02));
     border-radius: 20px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease-in-out;
+    color: white;
+    box-shadow:
+  inset 0 0 20px rgba(255,255,255,0.05),
+  0 0 30px rgba(14, 10, 10, 0.08);
+
   }
   .glass-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.2);
   }
-
+  
+  
 
 
   
