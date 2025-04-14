@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
-const container = document.getElementById('threejs-canvas');
+const container = document.getElementById('threejs-canvas'); // Stelle sicher, dass deine neue Section ein eindeutiges Container-Element besitzt
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000); // Komplett schwarz
 
@@ -34,14 +34,21 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(0, 10, 10);
 scene.add(directionalLight);
 
-// Modell laden
-const loader = new FBXLoader();
-loader.load('/3D-objects/hardware-sensor-platform.fbx', (object) => {
-  object.scale.set(1, 1, 1); // ggf. anpassen
-  scene.add(object);
-}, undefined, (err) => {
-  console.error('Fehler beim Laden:', err);
-});
+// Modell laden mit OBJLoader
+const loader = new OBJLoader();
+loader.load(
+  '/3D-objects/vr-wearable.obj', // Pfad zu deinem OBJ-Modell
+  (object) => {
+    // Passe Skalierung und Positionierung je nach Bedarf an:
+    object.scale.set(1, 1, 1);
+    object.position.set(0, 0, 0);
+    scene.add(object);
+  },
+  undefined,
+  (err) => {
+    console.error('Error loading OBJ model:', err);
+  }
+);
 
 // Render-Loop
 function animate() {
@@ -51,7 +58,7 @@ function animate() {
 }
 animate();
 
-// Bei Fenstergröße ändern
+// Resize-Handling
 window.addEventListener('resize', () => {
   camera.aspect = container.clientWidth / container.clientHeight;
   camera.updateProjectionMatrix();
