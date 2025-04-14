@@ -44,7 +44,7 @@ hemiLight.position.set(0, 20, 0);
 scene.add(hemiLight);
 
 // Optional: Environment Map laden
-const rgbeLoader = new RGBELoader();
+/*const rgbeLoader = new RGBELoader();
 rgbeLoader.setDataType(THREE.UnsignedByteType);
 rgbeLoader.load('/images/hdr/environment.hdr', (texture) => {
   const pmremGenerator = new THREE.PMREMGenerator(renderer);
@@ -54,7 +54,7 @@ rgbeLoader.load('/images/hdr/environment.hdr', (texture) => {
   scene.background = envMap; // falls gewünscht
   texture.dispose();
   pmremGenerator.dispose();
-});
+});*/
 
 // Modell laden
 const loader = new FBXLoader();
@@ -75,6 +75,7 @@ loader.load('/3D-objects/hardware-sensor-platform.fbx', (object) => {
 }, undefined, (err) => {
   console.error('Fehler beim Laden:', err);
 });
+
 
 // Render-Loop
 function animate() {
