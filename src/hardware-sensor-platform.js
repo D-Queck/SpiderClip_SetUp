@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 
-const container = document.getElementById('threejs-canvas');
+const container = document.getElementById('threejs-canvas-hardware-sensor-platform');
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000); // Komplett schwarz
 

@@ -256,125 +256,128 @@
       </div>
 
       <!-- 3D-Modell Bereich -->
-        <div id="hardware-3d" class="container" style="background-color: #000000;">
-          <!-- Container für die Three.js-Canvas -->
-          <div id="threejs-canvas" style="width: 100%; height: 600px; border-radius: 20px; overflow: hidden"></div>
+      <div id="hardware-3d" class="container" style="background-color: #000000;">
+        <!-- Container für die Three.js-Canvas -->
+        <div id="threejs-canvas-hardware-sensor-platform"
+          style="width: 100%; height: 600px; border-radius: 20px; overflow: hidden"></div>
+      </div>
+
+      <!-- Tabelle mit Bestandteilen und Download-Links -->
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-bordered table-striped custom-table">
+            <thead class="table-dark">
+              <tr>
+                <th colspan="2" scope="col" class="text-center">Hardware</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" style="width: 25%;">Components</th>
+                <td>
+                  Arduino Nano 33 IOT (2x)<br>
+                  3.7 Polymer Lithium Flat Battery<br>
+                  Sparkfun Bio Sensor Hub with Pulse Oximeter and Heart Rate Sensor
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3D Printing</th>
+                <td>
+                  <strong>Vive Tracker 1.0 &amp; 2.0:</strong><br>
+                  <a href="Deckel.stl">Cap</a><br>
+                  <a href="mainboard_V7.stl">Mainboard</a><br>
+                  <a href="Oberteil.stl">Top</a><br>
+                  <a href="Klammer%20Zeichnung%20v2.pdf">Drawing of Clip</a><br><br>
+                  <strong>Vive Tracker 3.0:</strong><br>
+                  <a href="OberteilV3.stl">Top</a><br>
+                  <a href="Unterteil_1.stl">Clip 1</a><br>
+                  <a href="Unterteil_2.stl">Clip 2</a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">VR-Setup (HTC Vive)</th>
+                <td>
+                  HTC Vive hardware components<br>
+                  2 Base Stations<br>
+                  HTC Vive Tracker V2 or V3<br>
+                  Vive Tracker hand strap
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section id="vr" class="py-5">
+      <div class="container position-relative" style="z-index: 2;">
+        <!-- Überschrift "About" mit extra margin -->
+        <div class="row mb-5">
+          <div class="col-12 text-center text-light" style="margin-top: 40px;">
+            <h1 class="text-white fw-bold" style="padding: 20px; text-align: center">
+              VR-Wearable
+          </div>
         </div>
 
-        <!-- Tabelle mit Bestandteilen und Download-Links -->
-        <div class="row">
-          <div class="col-12">
-            <table class="table table-bordered table-striped custom-table">
-              <thead class="table-dark">
-                <tr>
-                  <th colspan="2" scope="col" class="text-center">Hardware</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row" style="width: 25%;">Components</th>
-                  <td>
-                    Arduino Nano 33 IOT (2x)<br>
-                    3.7 Polymer Lithium Flat Battery<br>
-                    Sparkfun Bio Sensor Hub with Pulse Oximeter and Heart Rate Sensor
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3D Printing</th>
-                  <td>
-                    <strong>Vive Tracker 1.0 &amp; 2.0:</strong><br>
-                    <a href="Deckel.stl">Cap</a><br>
-                    <a href="mainboard_V7.stl">Mainboard</a><br>
-                    <a href="Oberteil.stl">Top</a><br>
-                    <a href="Klammer%20Zeichnung%20v2.pdf">Drawing of Clip</a><br><br>
-                    <strong>Vive Tracker 3.0:</strong><br>
-                    <a href="OberteilV3.stl">Top</a><br>
-                    <a href="Unterteil_1.stl">Clip 1</a><br>
-                    <a href="Unterteil_2.stl">Clip 2</a>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">VR-Setup (HTC Vive)</th>
-                  <td>
-                    HTC Vive hardware components<br>
-                    2 Base Stations<br>
-                    HTC Vive Tracker V2 or V3<br>
-                    Vive Tracker hand strap
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <!-- Unterüberschrift -->
+        <div class="row mb-5">
+          <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: center;">
+            The hardware sensor platform acts as the periphery of the communication interface.
+            It consists of a 3D-printed housing and a sensor platform with a communication module.
+          </p>
         </div>
-      </section>
+      </div>
 
+      <!-- 3D-Modell Bereich -->
+      <div id="hardware-3d" class="container" style="background-color: #000000;">
+        <!-- Container für die Three.js-Canvas -->
+        <div id="threejs-canvas-vr-wearable"
+          style="width: 100%; height: 600px; border-radius: 20px; overflow: hidden"></div>
+      </div>
 
+      <!-- Tabelle mit Bestandteilen und Download-Links -->
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-bordered table-striped custom-table">
+            <thead class="table-dark">
+              <tr>
+                <th colspan="2" scope="col" class="text-center">Software</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" style="width: 25%;">For Arduino</th>
+                <td>
+                  Before the code runs some libraries have to be downloaded:<br>
+                  &lt;Adafruit_MPU650.h&gt;<br>
+                  &lt;Adafruit_Sensor.h&gt;<br>
+                  &lt;SparkFun_Bio_Sensor_Hub_Library.h&gt;<br>
+                  &lt;Wire.h&gt;<br><br>
+                  Then you can download the code from GitHub:<br>
+                  <a href="https://github.com/D-Queck/SiderClip_Sensor">Download the code here!</a><br>
+                  Sparkfun Pulse Oximeter and Heart Rate Sensor
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">For Unity</th>
+                <td>
+                  You'll need to download the SteamVR Asset before you can use the virtual watch:<br>
+                  <a href="https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647">Download it
+                    here!</a><br><br>
+                  Unity VR-Watch:<br>
+                  You need to download the SDK so you can use the VR-Wearable:<br>
+                  <a href="https://github.com/D-Queck/VR_Wearable_Spiderclip">You can use this link to do so.</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-
-      <section id="vr" class="py-5">
-        <div class="container position-relative" style="z-index: 2;">
-          <!-- Überschrift "About" mit extra margin -->
-          <div class="row mb-5">
-            <div class="col-12 text-center text-light" style="margin-top: 40px;">
-              <h1 class="text-white fw-bold" style="padding: 20px; text-align: center">
-                VR-Wearable
-            </div>
-          </div>
-  
-          <!-- Unterüberschrift -->
-          <div class="row mb-5">
-            <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: center;">
-              The hardware sensor platform acts as the periphery of the communication interface.
-              It consists of a 3D-printed housing and a sensor platform with a communication module.
-            </p>
-          </div>
         </div>
-  
-        <!-- 3D-Modell Bereich -->
-          <div id="hardware-3d" class="container" style="background-color: #000000;">
-            <!-- Container für die Three.js-Canvas -->
-            <div id="threejs-canvas" style="width: 100%; height: 600px; border-radius: 20px; overflow: hidden"></div>
-          </div>
-  
-          <!-- Tabelle mit Bestandteilen und Download-Links -->
-          <div class="row">
-            <div class="col-12">
-              <table class="table table-bordered table-striped custom-table">
-                <thead class="table-dark">
-                  <tr>
-                    <th colspan="2" scope="col" class="text-center">Software</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row" style="width: 25%;">For Arduino</th>
-                    <td>
-                      Before the code runs some libraries have to be downloaded:<br>
-                      &lt;Adafruit_MPU650.h&gt;<br>
-                      &lt;Adafruit_Sensor.h&gt;<br>
-                      &lt;SparkFun_Bio_Sensor_Hub_Library.h&gt;<br>
-                      &lt;Wire.h&gt;<br><br>
-                      Then you can download the code from GitHub:<br>
-                      <a href="https://github.com/D-Queck/SiderClip_Sensor">Download the code here!</a><br>
-                      Sparkfun Pulse Oximeter and Heart Rate Sensor
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">For Unity</th>
-                    <td>
-                      You'll need to download the SteamVR Asset before you can use the virtual watch:<br>
-                      <a href="https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647">Download it here!</a><br><br>
-                      Unity VR-Watch:<br>
-                      You need to download the SDK so you can use the VR-Wearable:<br>
-                      <a href="https://github.com/D-Queck/VR_Wearable_Spiderclip">You can use this link to do so.</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-            </div>
-          </div>
-        </section>
+      </div>
+    </section>
 
   </main>
 

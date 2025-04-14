@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
-const container = document.getElementById('threejs-canvas'); // Stelle sicher, dass deine neue Section ein eindeutiges Container-Element besitzt
+const container = document.getElementById('threejs-canvas-vr-wearable'); // Stelle sicher, dass deine neue Section ein eindeutiges Container-Element besitzt
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000); // Komplett schwarz
 
