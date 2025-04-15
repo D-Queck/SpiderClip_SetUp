@@ -127,7 +127,7 @@ z-index: 1050; /* Sicherstellen, dass die Navbar immer oben bleibt */
   }
 
   .gradient-link {
-    background: linear-gradient(to right, #4c4adb, #108cff67);
+    background: linear-gradient(to right, #824adb, #05529bd0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
