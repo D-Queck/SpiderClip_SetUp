@@ -1,4 +1,4 @@
 import './style.css'
-import './hardware-sensor-platform.js';
-import './vr-wearable.js';
-import './header-blur.js';
+import './js/hardware-sensor-platform.js';
+import './js/vr-wearable.js';
+import './js/header-blur.js';
