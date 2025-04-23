@@ -1,79 +1,96 @@
 <section id="hardware" class="pt-0 pb-5" style="
-position: relative;
-background: url('images/Background-System.png') no-repeat center center;
-background-size: cover;
-min-height: 100vh;
-border-radius: 30px;
-overflow: hidden;
+  position: relative;
+  background: url('images/Background-System.png') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh;
+  border-radius: 30px;
+  overflow: hidden;
 ">
-    <div class="container position-relative" style="z-index: 2;">
-        <!-- Überschrift "About" mit extra margin -->
-        <div class="row mb-5">
-            <div class="col-12 text-center text-light" style="margin-top: 40px;">
-                <h1 class="text-white fw-bold" style="padding: 20px; text-align: center">
-                    Hardware-Sensor-Platform
-            </div>
-        </div>
+  <!-- Überschriften-Bereich -->
+  <div class="container position-relative" style="z-index: 2;">
+    <div class="row mb-5">
+      <div class="col-12 text-center text-light" style="margin-top: 40px;">
+        <h1 class="text-white fw-bold" style="padding: 20px; text-align: center">
+          Hardware-Sensor-Platform
+        </h1>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: center;">
+        The hardware sensor platform acts as the periphery of the communication interface.
+        It consists of a 3D-printed housing and a sensor platform with a communication module.
+      </p>
+    </div>
+  </div>
 
-        <!-- Unterüberschrift -->
-        <div class="row mb-5">
-            <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: center;">
-                The hardware sensor platform acts as the periphery of the communication interface.
-                It consists of a 3D-printed housing and a sensor platform with a communication module.
-            </p>
-        </div>
+  <!-- 3D-Modell + UI Overlay -->
+  <div id="hardware-3d" class="container position-relative" style="background-color: #000; z-index: 1;">
+
+    <!-- UI Overlay oben rechts -->
+    <div id="hardware-ui" style="
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    ">
+      <button id="btn-auto-rotate" class="btn btn-sm btn-light">Auto-Rotate</button>
+      <button id="btn-explode" class="btn btn-sm btn-light">Explode</button>
+      <select id="select-part" class="form-select form-select-sm">
+        <option value="">Show All Parts</option>
+        <!-- wird per JS mit Part-Namen gefüllt -->
+      </select>
     </div>
 
-    <!-- 3D-Modell Bereich -->
-    <div id="hardware-3d" class="container" style="background-color: #000000;">
-        <!-- Container für die Three.js-Canvas -->
-        <div id="threejs-canvas-hardware-sensor-platform"
-            style="width: 100%; height: 600px; border-radius: 20px; overflow: hidden"></div>
+    <!-- Three.js Canvas Container -->
+    <div id="threejs-canvas-hardware-sensor-platform"
+         style="width: 100%; height: 600px; border-radius: 20px; overflow: hidden;">
     </div>
+  </div>
 
-    <!-- Tabelle mit Bestandteilen und Download-Links -->
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-bordered table-striped custom-table">
-                <thead class="table-dark">
-                    <tr>
-                        <th colspan="2" scope="col" class="text-center">Hardware</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row" style="width: 25%;">Components</th>
-                        <td>
-                            Arduino Nano 33 IOT (2x)<br>
-                            3.7 Polymer Lithium Flat Battery<br>
-                            Sparkfun Bio Sensor Hub with Pulse Oximeter and Heart Rate Sensor
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3D Printing</th>
-                        <td>
-                            <strong>Vive Tracker 1.0 &amp; 2.0:</strong><br>
-                            <a href="Deckel.stl">Cap</a><br>
-                            <a href="mainboard_V7.stl">Mainboard</a><br>
-                            <a href="Oberteil.stl">Top</a><br>
-                            <a href="Klammer%20Zeichnung%20v2.pdf">Drawing of Clip</a><br><br>
-                            <strong>Vive Tracker 3.0:</strong><br>
-                            <a href="OberteilV3.stl">Top</a><br>
-                            <a href="Unterteil_1.stl">Clip 1</a><br>
-                            <a href="Unterteil_2.stl">Clip 2</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">VR-Setup (HTC Vive)</th>
-                        <td>
-                            HTC Vive hardware components<br>
-                            2 Base Stations<br>
-                            HTC Vive Tracker V2 or V3<br>
-                            Vive Tracker hand strap
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+  <!-- Tabelle mit Bestandteilen und Download-Links -->
+  <div class="container mt-5">
+    <table class="table table-bordered table-striped custom-table">
+      <thead class="table-dark">
+        <tr>
+          <th colspan="2" scope="col" class="text-center">Hardware</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" style="width: 25%;">Components</th>
+          <td>
+            Arduino Nano 33 IOT (2x)<br>
+            3.7 Polymer Lithium Flat Battery<br>
+            Sparkfun Bio Sensor Hub with Pulse Oximeter and Heart Rate Sensor
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3D Printing</th>
+          <td>
+            <strong>Vive Tracker 1.0 & 2.0:</strong><br>
+            <a href="Deckel.stl">Cap</a><br>
+            <a href="mainboard_V7.stl">Mainboard</a><br>
+            <a href="Oberteil.stl">Top</a><br>
+            <a href="Klammer%20Zeichnung%20v2.pdf">Drawing of Clip</a><br><br>
+            <strong>Vive Tracker 3.0:</strong><br>
+            <a href="OberteilV3.stl">Top</a><br>
+            <a href="Unterteil_1.stl">Clip 1</a><br>
+            <a href="Unterteil_2.stl">Clip 2</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">VR-Setup (HTC Vive)</th>
+          <td>
+            HTC Vive hardware components<br>
+            2 Base Stations<br>
+            HTC Vive Tracker V2 or V3<br>
+            Vive Tracker hand strap
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
