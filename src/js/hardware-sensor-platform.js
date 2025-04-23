@@ -1,14 +1,10 @@
-// src/js/hardware-sensor-platform.js
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { FBXLoader }   from 'three/examples/jsm/loaders/FBXLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 export function initHardwareCanvas() {
   const container = document.getElementById('threejs-canvas-hardware-sensor-platform');
-  if (!container) {
-    console.error('Hardware-Canvas-Container nicht gefunden!');
-    return;
-  }
+  if (!container) return console.error('Container fehlt.');
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
@@ -16,10 +12,10 @@ export function initHardwareCanvas() {
   const camera = new THREE.PerspectiveCamera(
     45,
     container.clientWidth / container.clientHeight,
-    1,
-    1000
+    0.1,      // nahe Clipping-Ebene
+    10000     // ferne Clipping-Ebene
   );
-  camera.position.set(0, 2, 5);
+  camera.position.set(0, 0, 10);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
@@ -28,45 +24,55 @@ export function initHardwareCanvas() {
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
-  controls.dampingFactor = 0.05;
+  controls.dampingFactor = 0.1;
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.8));
   const dir = new THREE.DirectionalLight(0xffffff, 1);
   dir.position.set(0, 10, 10);
   scene.add(dir);
-  const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
-  hemi.position.set(0, 20, 0);
-  scene.add(hemi);
 
-  const loader = new FBXLoader();
-  loader.load(
-    '/3D-objects/hardware-sensor-platform.fbx',
-    (obj) => {
-      obj.traverse(child => {
-        if (child.isMesh) {
-          child.material = new THREE.MeshStandardMaterial({
-            color: child.material.color || new THREE.Color(0xffffff),
-            roughness: 0.5,
-            metalness: 0.2,
-          });
-          child.castShadow = true;
-          child.receiveShadow = true;
-        }
-      });
-      obj.scale.set(1,1,1);
-      scene.add(obj);
+  // GLTF laden
+  new GLTFLoader().load(
+    '/3D-objects/Hardware-Sensor-Platform-ViveTracker_02.glb',
+    (gltf) => {
+      const model = gltf.scene;
+      scene.add(model);
+
+      // 1) BoundingBox berechnen
+      const bbox = new THREE.Box3().setFromObject(model);
+      const size = bbox.getSize(new THREE.Vector3());
+      const center = bbox.getCenter(new THREE.Vector3());
+
+      // 2) Modell zentrieren
+      model.position.sub(center);
+
+      // 3) Autom. Kamera-Abstand so setzen, dass das größte Modellmaß gut ins Bild passt
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const fov = camera.fov * (Math.PI / 180);
+      const cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2)) * 1.2; // *1.2 als Puffer
+
+      camera.position.set(0, 0, cameraZ);
+      camera.near = maxDim / 100;
+      camera.far = maxDim * 100;
+      camera.updateProjectionMatrix();
+
+      // 4) OrbitControls Zoom-Begrenzung
+      controls.minDistance = maxDim * 0.5;
+      controls.maxDistance = maxDim * 5;
     },
     undefined,
-    err => console.error('Fehler beim Laden:', err)
+    (err) => console.error('Fehler beim Laden des GLB-Modells:', err)
   );
 
-  function animate() {
+  // Render-Loop
+  const animate = () => {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
-  }
+  };
   animate();
 
+  // bei Resize anpassen
   window.addEventListener('resize', () => {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
