@@ -195,3 +195,77 @@ header,
     backdrop-filter: blur(8px);
   }
 }
+
+/* ========= Hardware UI Overlay Styles ========= */
+#hardware-ui .btn,
+#hardware-ui .form-select {
+  /* leichter Weiß-Gradient, halbtransparent */
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.04)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #fff !important;
+  /* weiße Schrift */
+  backdrop-filter: blur(6px);
+  /* milder Glass-Look */
+  transition: background 0.2s, border-color 0.2s;
+}
+
+/* Hover- und Focus-States */
+#hardware-ui .btn:hover,
+#hardware-ui .form-select:hover,
+#hardware-ui .btn:focus,
+#hardware-ui .form-select:focus {
+  background: linear-gradient(135deg,
+      rgba(255, 18, 255, 0.2),
+      rgba(0, 17, 250, 0.08)) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* Weißen Pfeil im Select sicherstellen */
+#hardware-ui .form-select {
+  background-repeat: no-repeat !important;
+  background-position: calc(100% - 0.5rem) center !important;
+  background-size: 1em !important;
+}
+
+#hardware-ui .form-select {
+  /* Native Pfeil verbergen, damit die Hintergrund-Regeln greifen */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Hintergrund & Text der Einträge */
+#hardware-ui .form-select option {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+}
+
+/* Hover- und ausgewählter Eintrag */
+#hardware-ui .form-select option:hover,
+#hardware-ui .form-select option:checked {
+  background-color: rgba(255,255,255,0.15);
+}
+
+/* Für Safari/Chrome: scrollbar im Dropdown dunkler */
+#hardware-ui .form-select::-webkit-scrollbar {
+  width: 8px;
+}
+#hardware-ui .form-select::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.2);
+}
+#hardware-ui .form-select::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+}
+
+#hardware-ui .form-select option:checked,
+#hardware-ui .form-select option[selected],
+#hardware-ui .form-select option:focus,
+#hardware-ui .form-select option:active {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+}
