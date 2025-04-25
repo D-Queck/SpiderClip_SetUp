@@ -31,6 +31,17 @@ body {
   }
 }
 
+.heading-bg {
+  background-image: url('../images/H1_background.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 400px 120px;       /* Breite 200px, Höhe 60px */
+  border-radius: 0.25rem;
+  z-index: 3;
+}
+
+
+
 th {
   /*Eigenschaften der Tabellenkopfes*/
   border-bottom: 2px rgb(180, 180, 180) solid;
