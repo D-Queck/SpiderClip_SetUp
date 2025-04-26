@@ -1,0 +1,14 @@
+@use 'variables';
+
+.heading-bg {
+  background-image: url('../images/H1_background.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 400px 120px;
+  border-radius: 0.25rem;
+  z-index: 3;
+}
+
+.text-muted-light {
+  color: variables.$color-muted-light;
+}

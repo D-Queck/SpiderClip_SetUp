@@ -1,0 +1,20 @@
+th {
+    border-bottom: 2px rgb(180, 180, 180) solid;
+    border-left:  2px rgb(180, 180, 180) solid;
+  }
+  
+  table {
+    border: 2px rgb(180, 180, 180) solid;
+  }
+  
+  table td + td {
+    border-left: 2px rgb(180, 180, 180) solid;
+  }
+  
+  .custom-table {
+    width: 60%;
+    display: flex;
+    margin: 20px auto;
+    justify-content: space-between;
+  }
+  

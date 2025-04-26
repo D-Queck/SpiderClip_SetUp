@@ -1,4 +1,4 @@
-import './style.css';
+import './css/main.scss';
 
 async function loadComponent(id, path, initFn = null) {
   const res  = await fetch(path);

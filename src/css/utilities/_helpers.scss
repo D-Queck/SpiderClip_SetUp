@@ -1,0 +1,45 @@
+@use '../base/variables' as vars;
+
+.custom-container {
+  border: 4px solid #141414;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+  background-color: vars.$color-bg;
+}
+
+.custom-image {
+  width: 100%;
+  height: auto;
+}
+
+.custom-image-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.spacer {
+  display: block;
+  width: 100%;
+  background: transparent;
+}
+
+.spacer-sm { height: vars.$spacing-sm; }
+.spacer-md { height: vars.$spacing-md; }
+.spacer-lg { height: vars.$spacing-lg; }
+
+.gradient-link {
+  background: linear-gradient(to right, #824adb, #05529bd0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.gradient-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+  transform: translateY(-1px);
+}
