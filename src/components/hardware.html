@@ -30,18 +30,10 @@ style="
   </div>
 
   <!-- 3D-Modell + UI Overlay -->
-  <div id="hardware-3d" class="container position-relative" style="background-color: #000; z-index: 1;">
+  <div id="hardware-3d" class="container position-relative" style="background-color: #000; z-index: 1; border-radius: 20px;">
 
     <!-- UI Overlay oben rechts -->
-    <div id="hardware-ui" style="
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    ">
+    <div id="hardware-ui" class="scene-ui">
       <button id="btn-auto-rotate" class="btn btn-sm btn-light">Auto-Rotate</button>
       <button id="btn-explode" class="btn btn-sm btn-light" disabled>Explode</button>
       <select id="select-part" class="form-select form-select-sm">
@@ -51,9 +43,7 @@ style="
     </div>
 
     <!-- Three.js Canvas Container -->
-    <div id="threejs-canvas-hardware-sensor-platform" class="threejs-canvas"
-       style="width: 100%; height: 600px; border-radius: 20px; overflow: hidden;">
-    </div>
+    <div id="threejs-canvas-hardware-sensor-platform" class="threejs-canvas"></div>
   </div>
 
   <!-- Tabelle mit Bestandteilen und Download-Links -->
