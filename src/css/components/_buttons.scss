@@ -1,0 +1,15 @@
+@use '../base/variables' as vars;
+
+button {
+  background-color: vars.$color-primary;
+  color: #fff;
+  padding: vars.$spacing-sm vars.$spacing-sm;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.8;
+}

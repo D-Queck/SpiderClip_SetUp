@@ -1,0 +1,78 @@
+<section id="vr-wearable" class="py-5 pb-0" style="
+  position: relative;
+  background: url('images/Background-About.png') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh;
+  border-radius: 30px;
+  overflow: hidden;
+">
+  <!-- Dunkles Overlay -->
+  <div style="position:absolute; inset:0; background:rgba(0,0,0,0.6); z-index:1;"></div>
+
+  <!-- Überschrift -->
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row mb-5">
+      <div class="col-12 text-center text-light" style="margin-top:40px;">
+        <h1 class="heading-bg text-white fw-bold" style="padding:20px; text-align:center">
+          VR-Wearable
+        </h1>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <p class="text-muted mt-2" style="max-width:700px; margin:0 auto; text-align:center;">
+        Das VR-Wearable wird auf Applikationsebene in Unity integriert und visualisiert Daten direkt in der Scene.
+      </p>
+    </div>
+  </div>
+
+  <!-- 3D + UI wie Hardware -->
+  <div id="vr-3d" class="container position-relative" style="background-color:#000000; z-index:2; border-radius: 20px;">
+    <!-- UI Overlay oben rechts -->
+    <div id="vr-ui" class="scene-ui">
+      <button id="btn-auto-rotate-vr" class="btn btn-sm btn-light" disabled>Auto-Rotate</button>
+      <button id="btn-explode-vr"     class="btn btn-sm btn-light" disabled>Explode</button>
+      <select id="select-part-vr"     class="form-select form-select-sm" disabled>
+        <option value="">Show All Parts</option>
+      </select>
+    </div>
+
+    <!-- Canvas-Container -->
+    <div id="threejs-canvas-vr-wearable" class="threejs-canvas"></div>
+  </div>
+
+  <!-- Tabelle -->
+  <div class="container mt-5 position-relative" style="z-index:2;">
+    <table class="table table-bordered table-striped custom-table">
+      <thead class="table-dark">
+        <tr><th colspan="2" class="text-center">Software</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" style="width:25%;">For Arduino</th>
+          <td>
+            Libraries:<br>
+            &lt;Adafruit_MPU650.h&gt;<br>
+            &lt;Adafruit_Sensor.h&gt;<br>
+            &lt;SparkFun_Bio_Sensor_Hub_Library.h&gt;<br>
+            &lt;Wire.h&gt;<br><br>
+            GitHub-Code:<br>
+            <a href="https://github.com/D-Queck/SiderClip_Sensor" class="gradient-link">Download Arduino Code</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">For Unity</th>
+          <td>
+            SteamVR-Plugin:<br>
+            <a href="https://assetstore.unity.com/.../steamvr-plugin-32647" class="gradient-link">
+              SteamVR Plugin (Asset Store)
+            </a><br><br>
+            VR-Wearable SDK:<br>
+            <a href="https://github.com/D-Queck/VR_Wearable_Spiderclip" class="gradient-link">
+              GitHub Repository
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+header,
+.navbar {
+  z-index: 1050;
+}
+
+.navbar.blurred {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}

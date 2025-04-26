@@ -1,0 +1,17 @@
+@use 'variables';
+
+html,
+body {
+  scroll-behavior: smooth;
+  background-color: variables.$color-bg !important;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: variables.$breakpoint-md) {
+  body {
+    font-family: 'Inter', sans-serif;
+    color: variables.$color-text;
+    padding: 0 15rem;
+  }
+}

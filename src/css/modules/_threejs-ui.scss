@@ -1,0 +1,66 @@
+.threejs-canvas {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 600px;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .scene-ui {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .scene-ui .btn,
+  .scene-ui .form-select {
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04)) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    color: #fff !important;
+    backdrop-filter: blur(6px);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  
+  .scene-ui .btn:hover,
+  .scene-ui .form-select:hover,
+  .scene-ui .btn:focus,
+  .scene-ui .form-select:focus {
+    background: linear-gradient(135deg, rgba(255,18,255,0.2), rgba(0,17,250,0.08)) !important;
+    border-color: rgba(255,255,255,0.6) !important;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+  }
+  
+  .scene-ui .form-select {
+    appearance: none;
+    background-repeat: no-repeat !important;
+    background-position: calc(100% - 0.5rem) center !important;
+    background-size: 1em !important;
+  }
+  
+  .scene-ui .form-select option {
+    background-color: rgba(0,0,0,0.9);
+    color: #fff;
+  }
+  
+  .scene-ui .form-select option:hover,
+  .scene-ui .form-select option:checked {
+    background-color: rgba(255,255,255,0.15);
+  }
+  
+  .scene-ui .form-select::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scene-ui .form-select::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.2);
+  }
+  .scene-ui .form-select::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+  }
+  
