@@ -1,4 +1,3 @@
-// src/main.js
 import './style.css';
 
 async function loadComponent(id, path, initFn = null) {
@@ -13,35 +12,31 @@ async function init() {
   await loadComponent('header', '/src/components/header.html');
   await import('./js/header-blur.js');
 
-  // Statische Sections
-  await loadComponent('hero', '/src/components/hero.html');
-  await loadComponent('about', '/src/components/about.html');
-  await loadComponent('system', '/src/components/system.html');
-  await loadComponent('resources', '/src/components/resources.html');
+  // statische Sektionen
+  await loadComponent('hero',    '/src/components/hero.html');
+  await loadComponent('about',   '/src/components/about.html');
+  await loadComponent('system',  '/src/components/system.html');
+  await loadComponent('resources','/src/components/resources.html');
 
-  // Hardware-Sensor-Platform + ThreeJS
-  await loadComponent(
-    'hardware',
-    '/src/components/hardware.html',
+  // Hardware
+  await loadComponent('hardware','/src/components/hardware.html',
     async () => {
-      const mod = await import('./js/hardware-sensor-platform.js');
-      mod.initHardwareCanvas();
+      const { initHardwareCanvas } = await import('./js/hardware-sensor-platform.js');
+      initHardwareCanvas();
     }
   );
 
-  // VR-Wearable + ThreeJS
-  await loadComponent(
-    'vr',
-    '/src/components/vr-wearable.html',
+  // VR-Wearable
+  await loadComponent('vr', '/src/components/vr-wearable.html',
     async () => {
-      const mod = await import('./js/vr-wearable.js');
-      mod.initVrCanvas();
+      const { initVRCanvas } = await import('./js/vr-wearable.js');
+      initVRCanvas();
     }
   );
 
   // Publications + Footer
-  await loadComponent('publications', '/src/components/publications.html');
-  await loadComponent('footer', '/src/components/footer.html');
+  await loadComponent('publications','/src/components/publications.html');
+  await loadComponent('footer',      '/src/components/footer.html');
 }
 
 init();
