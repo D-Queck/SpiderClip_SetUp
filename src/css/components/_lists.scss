@@ -1,0 +1,14 @@
+// src/css/components/_list.scss
+@use '../base/variables' as vars;
+@use 'sass:math';
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding-left: vars.$spacing-sm;
+}
+
+.list li {
+  text-align: left;
+  margin-bottom: math.div(vars.$spacing-sm, 2);
+}
