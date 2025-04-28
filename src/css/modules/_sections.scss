@@ -12,6 +12,18 @@
   &__inner {
     position: relative;
     z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    // Haupttitel zentrieren, Content links
+    text-align: center;
+
+    // Unterbereiche (Sektion Content) linksbündig
+    & > .section__content {
+      text-align: left;
+    }
+    position: relative;
+    z-index: 2;
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -19,12 +31,11 @@
   }
 
   &__title {
-    @extend .heading-bg;       // Hintergrund unter der Überschrift
+    @extend .heading-bg;
     color: white;
     font-weight: bold;
     margin-bottom: vars.$spacing-md;
     padding: vars.$spacing-sm vars.$spacing-md;
-    
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 1rem;
     position: relative;
@@ -46,23 +57,51 @@
     background: url('../images/Background-About.png') no-repeat center center;
     background-size: cover;
     min-height: 800px;
+
+    // Left-align subtitles in About section (optional override)
+    .section__subtitle {
+      text-align: left;
+      margin-left: 0;
+      margin-right: auto;
+    }
   }
 
   &--system {
     background: url('../images/Background-System.png') no-repeat center center;
     background-size: cover;
     min-height: 100vh;
+
+    // Left-align subtitles in System section (optional override)
+    .section__subtitle {
+      text-align: left;
+      margin-left: 0;
+      margin-right: auto;
+    }
   }
 
   &--hardware {
     background: url('../images/Background-Hardware.png') no-repeat center center;
     background-size: cover;
     min-height: 100vh;
+
+    // Left-align subtitles in Hardware section (optional override)
+    .section__subtitle {
+      text-align: left;
+      margin-left: 0;
+      margin-right: auto;
+    }
   }
 
   &--resources {
     background: url('../images/Background-About.png') no-repeat center center;
     background-size: cover;
     min-height: 100vh;
+
+    // Left-align subtitles in Resources section
+    .section__subtitle {
+      text-align: left;
+      margin-left: 0;
+      margin-right: auto;
+    }
   }
 }
