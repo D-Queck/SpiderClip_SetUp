@@ -1,14 +1,11 @@
-<section id="hardware" class="pt-0 pb-5" 
-style="
+<section id="hardware" class="pt-0 pb-5" style="
   position: relative;
   background: url('images/Background-About.png') no-repeat center center; 
   background-size: cover;
   min-height: 100vh;
   border-radius: 30px;
   overflow: hidden;">
-  
-<!-- Optionaler dunkler Overlay -->
-<div style="position: absolute; inset: 0; background: rgba(0,0,0,0.6); z-index: 1;"></div>
+
 
   <!-- Überschriften-Bereich -->
   <div class="container position-relative" style="z-index: 2;">
@@ -30,7 +27,8 @@ style="
   </div>
 
   <!-- 3D-Modell + UI Overlay -->
-  <div id="hardware-3d" class="container position-relative" style="background-color: #000; z-index: 1; border-radius: 20px;">
+  <div id="hardware-3d" class="container position-relative"
+    style="background-color: #000; z-index: 1; border-radius: 20px;">
 
     <!-- UI Overlay oben rechts -->
     <div id="hardware-ui" class="scene-ui">
@@ -46,47 +44,16 @@ style="
     <div id="threejs-canvas-hardware-sensor-platform" class="threejs-canvas"></div>
   </div>
 
-  <!-- Tabelle mit Bestandteilen und Download-Links -->
-  <div class="container mt-5">
-    <table class="table table-bordered table-striped custom-table">
-      <thead class="table-dark">
-        <tr>
-          <th colspan="2" scope="col" class="text-center">Hardware</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row" style="width: 25%;">Components</th>
-          <td>
-            Arduino Nano 33 IOT (2x)<br>
-            3.7 Polymer Lithium Flat Battery<br>
-            Sparkfun Bio Sensor Hub with Pulse Oximeter and Heart Rate Sensor
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3D Printing</th>
-          <td>
-            <strong>Vive Tracker 1.0 & 2.0:</strong><br>
-            <a href="Deckel.stl">Cap</a><br>
-            <a href="mainboard_V7.stl">Mainboard</a><br>
-            <a href="Oberteil.stl">Top</a><br>
-            <a href="Klammer%20Zeichnung%20v2.pdf">Drawing of Clip</a><br><br>
-            <strong>Vive Tracker 3.0:</strong><br>
-            <a href="OberteilV3.stl">Top</a><br>
-            <a href="Unterteil_1.stl">Clip 1</a><br>
-            <a href="Unterteil_2.stl">Clip 2</a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">VR-Setup (HTC Vive)</th>
-          <td>
-            HTC Vive hardware components<br>
-            2 Base Stations<br>
-            HTC Vive Tracker V2 or V3<br>
-            Vive Tracker hand strap
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="row mt-5 mb-2">
+    <div class="col-12 text-center text-light">
+      <h2>Construction Plan</h2>
+      <div class="spacer-lg"></div>
+
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto">
+        The following schematic model illustrates how the SpiderClip system is structured and how its subsystems
+        interact.
+      </p>
+    </div>
   </div>
+
 </section>
