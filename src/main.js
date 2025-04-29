@@ -1,4 +1,5 @@
 import './css/main.scss';
+import { initParallax } from './js/parallax.js';
 
 async function loadComponent(id, path, initFn = null) {
   const res  = await fetch(path);
@@ -37,6 +38,9 @@ async function init() {
   // Publications + Footer
   await loadComponent('publications','/src/components/publications.html');
   await loadComponent('footer',      '/src/components/footer.html');
+
+  // Parallax
+  initParallax();
 }
 
 init();
