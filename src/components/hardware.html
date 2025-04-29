@@ -40,13 +40,65 @@
 
   <div class="row mt-5 mb-2">
     <div class="col-12 text-center text-light">
-      <h2>Construction Plan</h2>
+      <h2>3D-Housing</h2>
       <div class="spacer-lg"></div>
 
-      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto">
-        The following schematic model illustrates how the SpiderClip system is structured and how its subsystems
-        interact.
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        The SpiderClip enclosure is designed as a three-piece shell that neatly houses all electronics – sensor board, battery and communication module.
+        Each shell half plus a top-cap are printed separately on any standard FDM or SLA printer. To fasten the parts you can either use a drop of strong
+        adhesive or insert M2.5 screws into the integrated bores and alignment pins.
       </p>
+      <div class="spacer-md"></div>
+      <ul class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        <li><strong>Vive Tracker 1.0:</strong> Two Ø3 mm bores line up with the tracker’s mounting lugs. Snap the tracker in and secure with screws.</li>
+        <li><strong>Vive Tracker 2.0 / 3.0:</strong> Uses a slightly adjusted hole pattern and reinforced clip geometry – alignment pegs guarantee a flush fit.</li>
+        <li><strong>Controller-Loop Mount:</strong> Designed for Quest 2/3 or Index controllers. Feed a nylon strap through side slots and tighten around the grip.</li>
+      </ul>
+      <div class="spacer-md"></div>
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        In the 3D visualization aboth all drill-holes, slots and alignment pins are highlighted in red, so you can instantly see where to glue or
+        where to drive screws for each variant.
+      </p>
+
+    </div>
+  </div>
+
+  <div class="row mt-5 mb-2">
+    <div class="col-12 text-center text-light">
+      <h2>Sensor Platform Overview</h2>
+      <div class="spacer-lg"></div>
+
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        At the heart of the Hardware Sensor Platform sits an <strong>Arduino Nano 33 IoT</strong>, powered by a single
+        3.7 V LiPo cell, which communicates via I²C (SCL, SDA) with a SparkFun Bio Sensor Hub (pulse oximeter &amp;
+        heart‐rate). The Nano acts as I²C‐master: it polls the Bio Sensor for data and relays measurements over USB
+        or BLE to the host system.
+      </p>
+      <div class="spacer-md"></div>
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        You can power the Nano 33 IoT either via its Micro-USB port (e.g. from your PC or a USB supply) or directly
+        from the LiPo battery. Both the sensor hub and the Nano share the same 3.7 V rail.
+      </p>
+      <h3 class="mt-4">Getting Started</h3>
+    <p>
+      Before uploading the firmware, install the following Arduino libraries:
+    </p>
+    <ul class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+      <li>&lt;ArduinoBLE.h&gt;</li>
+      <li>&lt;Arduino_LSM6DS3.h&gt;</li>
+      <li>&lt;SparkFun_Bio_Sensor_Hub_Library.h&gt;</li>
+      <li>&lt;Wire.h&gt; (in der Regel bereits im Kern-Package enthalten)</li>
+    </ul>
+      <div class="spacer-md"></div>
+      <p>
+        Anschließend kannst du den fertigen Sketch von GitHub herunterladen:
+        <a href="https://github.com/D-Queck/SiderClip_Sensor" class="gradient-link" target="_blank">Download Arduino Code</a>
+      </p>
+  
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        Im nächsten Kapitel erklären wir den Aufbau und die einzelnen Funktionen im Detail.
+      </p>
+
     </div>
   </div>
 
