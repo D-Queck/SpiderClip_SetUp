@@ -9,7 +9,7 @@ export function initParallaxSections() {
         // nur, wenn in Viewport (±screenHeight)
         if (rect.bottom > 0 && rect.top < window.innerHeight) {
           // langsamer Versatz, z.B. 20%
-          const offset = rect.top * 0.2;
+          const offset = rect.top * 0.3;
           sec.style.backgroundPosition = `center ${offset}px`;
         }
       });
