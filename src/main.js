@@ -1,6 +1,10 @@
 import './css/main.scss';
 import { initParallaxHero } from './js/parallax-hero.js';
 import { initParallaxSections } from './js/parallax-sections.js';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/components/prism-cpp.js';
+
 
 async function loadComponent(id, path, initFn = null) {
   const res  = await fetch(path);
