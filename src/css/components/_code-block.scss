@@ -49,6 +49,29 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+// Scrollbar-Styles direkt hier:
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.3) rgba(0,0,0,0.2);
+
+    /* WebKit */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.2);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.3);
+      border-radius: 3px;
+      border: 1px solid transparent;
+      background-clip: content-box;
+      transition: background-color 0.2s;
+    }
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.6);
+    }
+    
 
     pre {
       margin: 0;
