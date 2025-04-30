@@ -1,0 +1,45 @@
+.code-block {
+    margin: vars.$spacing-lg auto;
+    max-width: 900px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  
+    &__header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: vars.$spacing-sm vars.$spacing-md;
+      background: rgba(0,0,0,0.3);
+    }
+  
+    &__label {
+      margin-left: auto;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+  
+    pre {
+      margin: 0;
+      padding: vars.$spacing-md;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Menlo, Consolas, monospace;
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+  
+    .copy-btn {
+      background: #824adb !important;
+      border-color: transparent !important;
+      color: #fff !important;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      &:hover {
+        background: #05529b !important;
+      }
+    }
+  }
+  
