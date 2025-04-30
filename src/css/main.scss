@@ -1,21 +1,26 @@
+// src/css/main.scss
+
 // Base
-@use 'base/reset';
-@use 'base/variables';
-@use 'base/typography';
+@use "./base/reset";
+@use "./base/variables";
+@use "./base/typography";
 
 // Layout
-@use 'layout/header';
+@use "./layout/header";
 
 // Components
-@use 'components/buttons';
-@use 'components/cards';
-@use 'components/tables';
-@use 'components/carousel';
-@use 'components/lists';
+@use "./components/buttons";
+@use "./components/cards";
+@use "./components/tables";
+@use "./components/carousel";
+@use "./components/lists";
+@use "./components/code-block";    // hier das ./
+
+
 
 // Modules
-@use 'modules/threejs-ui';
-@use 'modules/sections';
+@use "./modules/threejs-ui";
+@use "./modules/sections";
 
 // Utilities
-@use 'utilities/helpers';
+@use "./utilities/helpers";

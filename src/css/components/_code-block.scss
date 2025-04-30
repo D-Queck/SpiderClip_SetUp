@@ -1,3 +1,6 @@
+@use '../base/variables' as vars;   /*  <--  das fehlte!  */
+@use '../base/typography' as typo;
+
 .code-block {
     margin: vars.$spacing-lg auto;
     max-width: 900px;
@@ -8,38 +11,68 @@
   
     &__header {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
       padding: vars.$spacing-sm vars.$spacing-md;
       background: rgba(0,0,0,0.3);
-    }
   
-    &__label {
-      margin-left: auto;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-    }
-  
-    pre {
-      margin: 0;
-      padding: vars.$spacing-md;
-      overflow-x: auto;
-    }
-    code {
-      font-family: Menlo, Consolas, monospace;
-      font-size: 0.875rem;
-      line-height: 1.4;
-    }
-  
-    .copy-btn {
-      background: #824adb !important;
-      border-color: transparent !important;
-      color: #fff !important;
-      font-weight: 600;
-      transition: background 0.3s ease;
-      &:hover {
-        background: #05529b !important;
+      .code-block__label {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.9rem;
+        margin-right: auto;
       }
+  
+      button {
+        background: transparent !important;
+        border: none !important;
+        padding: 4px;
+        margin-left: 8px;
+        color: rgba(255,255,255,0.8) !important;
+        cursor: pointer;
+        transition: color 0.2s, transform 0.3s;
+  
+        svg {
+          display: block;
+        }
+        &:hover {
+          color: #fff !important;
+        }
+      }
+  
+      .code-block__toggle {
+        svg { transition: transform 0.3s ease; }
+      }
+    }
+  
+    /* Inhalt standardmäßig komplett einklappen */
+    &__content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      pre {
+        margin: 0;
+        padding: vars.$spacing-md;
+        text-align: left;    /* linksbündig */
+      }
+      code {
+        font-family: Menlo, Consolas, monospace;
+        font-size: 0.875rem;
+        line-height: 1.4;
+      }
+    }
+  
+    /* geöffneten Zustand */
+    &.open {
+      .code-block__content {
+        max-height: 500px;   /* genügend Höhe für den Code */
+      }
+      .code-block__toggle svg {
+        transform: rotate(180deg);
+      }
+    }
+  
+    /* Copy-Button extra Styling */
+    .code-block__copy {
+      font-weight: 600 !important;
     }
   }
   

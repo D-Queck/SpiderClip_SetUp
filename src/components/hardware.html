@@ -100,14 +100,30 @@
       </p>
 
       <div class="code-block">
-        <div class="code-block__header scene-ui">
-          <button class="btn btn-sm btn-light copy-btn">Copy</button>
+        <div class="code-block__header">
           <span class="code-block__label">peripheral.ino</span>
+          <!-- Toggle-Button mit „Dreieck“-Icon -->
+          <button class="code-block__toggle" aria-label="Show Code">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 10l5 5 5-5z"/>
+            </svg>
+          </button>
+          <!-- Copy-Button mit „Copy“-Icon -->
+          <button class="code-block__copy" aria-label="Copy Code">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0
+                       1.1 .9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0
+                       16H8V7h11v14z"/>
+            </svg>
+          </button>
         </div>
-        <pre><code id="per-code" class="language-cpp"></code></pre>
+        <pre class="code-block__content"><code id="per-code" class="language-cpp"></code></pre>
       </div>
+      
 
     </div>
+
+
   </div>
 
 </section>
