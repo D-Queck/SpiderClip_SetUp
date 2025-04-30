@@ -1,78 +1,103 @@
-@use '../base/variables' as vars;   /*  <--  das fehlte!  */
+@use '../base/variables' as vars;
 @use '../base/typography' as typo;
 
 .code-block {
-    margin: vars.$spacing-lg auto;
-    max-width: 900px;
-    background: #1e1e1e;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  
-    &__header {
-      display: flex;
-      align-items: center;
-      padding: vars.$spacing-sm vars.$spacing-md;
-      background: rgba(0,0,0,0.3);
-  
-      .code-block__label {
-        color: rgba(255,255,255,0.7);
-        font-size: 0.9rem;
-        margin-right: auto;
+  margin: vars.$spacing-lg auto;
+  max-width: 900px;
+  background: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  /* kein overflow:hidden hier, damit die Scrollbar im Content funktioniert */
+  text-align: inherit;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: vars.$spacing-sm vars.$spacing-md;
+    background: rgba(0,0,0,0.3);
+
+    .code-block__label {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      margin-right: auto;
+    }
+
+    button {
+      background: transparent !important;
+      border: none !important;
+      padding: 4px;
+      margin-left: 8px;
+      color: rgba(255,255,255,0.8) !important;
+      cursor: pointer;
+      transition: color 0.2s, transform 0.3s;
+
+      svg {
+        display: block;
       }
-  
-      button {
-        background: transparent !important;
-        border: none !important;
-        padding: 4px;
-        margin-left: 8px;
-        color: rgba(255,255,255,0.8) !important;
-        cursor: pointer;
-        transition: color 0.2s, transform 0.3s;
-  
-        svg {
-          display: block;
-        }
-        &:hover {
-          color: #fff !important;
-        }
-      }
-  
-      .code-block__toggle {
-        svg { transition: transform 0.3s ease; }
+      &:hover {
+        color: #fff !important;
       }
     }
-  
-    /* Inhalt standardmäßig komplett einklappen */
-    &__content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      pre {
-        margin: 0;
-        padding: vars.$spacing-md;
-        text-align: left;    /* linksbündig */
-      }
-      code {
-        font-family: Menlo, Consolas, monospace;
-        font-size: 0.875rem;
-        line-height: 1.4;
-      }
-    }
-  
-    /* geöffneten Zustand */
-    &.open {
-      .code-block__content {
-        max-height: 500px;   /* genügend Höhe für den Code */
-      }
-      .code-block__toggle svg {
-        transform: rotate(180deg);
-      }
-    }
-  
-    /* Copy-Button extra Styling */
-    .code-block__copy {
-      font-weight: 600 !important;
+
+    .code-block__toggle {
+      svg { transition: transform 0.3s ease; }
     }
   }
-  
+
+  /* der scrollbare Bereich */
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    pre {
+      margin: 0;
+      padding: vars.$spacing-md;
+
+      /* Firefox */
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.3) transparent;
+      text-align: left;  /* linksbündig */
+    }
+
+    /* WebKit (Chrome, Safari, Edge) */
+    pre::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    pre::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    pre::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      border: 2px solid transparent; /* sorgt für abgerundete Ecken */
+      background-clip: content-box;
+      transition: background-color 0.2s;
+    }
+    pre:hover::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0);
+    }
+
+    code {
+      font-family: Menlo, Consolas, monospace;
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+  }
+
+  /* geöffnet: Content zeigt Scrollbar und maximalen Inhalt */
+  &.open {
+    .code-block__content {
+      max-height: 800px; /* oder beliebig anpassen */
+      overflow: auto;
+    }
+    .code-block__toggle svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  /* Copy-Button extra Styling */
+  .code-block__copy {
+    font-weight: 600 !important;
+  }
+}
