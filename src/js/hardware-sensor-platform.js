@@ -30,11 +30,13 @@ export function initHardwareCanvas() {
   controls.enableDamping = true;
   controls.dampingFactor = 0.1;
 
-  // Licht
+  // Licht (oben + Grundausleuchtung)
   scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-  const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-  dirLight.position.set(0, 10, 10);
+  const dirLight = new THREE.DirectionalLight(0xffffff, 2);
+  dirLight.position.set(15, 20, 20);
   scene.add(dirLight);
+
+
 
   // Explode/Select
   const parts = [];
