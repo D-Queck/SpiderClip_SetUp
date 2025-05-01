@@ -38,6 +38,8 @@
     <div id="threejs-canvas-hardware-sensor-platform" class="threejs-canvas"></div>
   </div>
 
+  <div class="spacer-lg"></div>
+
   <div class="row mt-5 mb-2">
     <div class="col-12 text-center text-light">
       <h2>3D-Housing</h2>
@@ -60,6 +62,8 @@
         where to drive screws for each variant.
       </p>
 
+      <div class="spacer-lg"></div>
+
     </div>
   </div>
 
@@ -74,13 +78,23 @@
         heart‐rate). The Nano acts as I²C‐master: it polls the Bio Sensor for data and relays measurements over USB
         or BLE to the host system.
       </p>
-      <div class="spacer-md"></div>
+
+      <div class="spacer-lg"></div>
+      <div class="row justify-content-center mb-4">
+        <div class="col-9 text-center">
+          <img src="images/Wiring_White.png"
+               alt="System Design Diagram"
+               class="img-fluid rounded shadow system-design-img">
+        </div>
+      </div> 
+
+      <div class="spacer-lg"></div>
       <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
         You can power the Nano 33 IoT either via its Micro-USB port (e.g. from your PC or a USB supply) or directly
         from the LiPo battery. Both the sensor hub and the Nano share the same 3.7 V rail.
       </p>
-      <h3 class="mt-4">Getting Started</h3>
-    <p>
+      <div class="spacer-md"></div>
+    <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
       Before uploading the firmware, install the following Arduino libraries:
     </p>
     <ul class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
@@ -90,16 +104,14 @@
       <li>&lt;Wire.h&gt; (in der Regel bereits im Kern-Package enthalten)</li>
     </ul>
       <div class="spacer-md"></div>
-      <p>
-        Anschließend kannst du den fertigen Sketch von GitHub herunterladen:
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        You can download the completed sketch from GitHub:
         <a href="https://github.com/D-Queck/SiderClip_Sensor" class="gradient-link" target="_blank">Download Arduino Code</a>
       </p>
   
       <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
-        Oder alternativer Download hier im unterem Abschnitt:
+        Or alternatively, download it here in the section below:
       </p>
-
-      
 
       <div class="code-block">
         <div class="code-block__header">
@@ -121,6 +133,10 @@
           <pre><code id="per-code" class="language-cpp"></code></pre>
         </div>
       </div>
+
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        Now the sketch needs to be uploaded to the Arduino.
+      </p>
       
 
     </div>
