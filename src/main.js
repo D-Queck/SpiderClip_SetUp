@@ -29,6 +29,8 @@ async function init() {
     }
   );
 
+  await loadComponent('communication','/src/components/communication.html');
+
   // VR-Wearable
   await loadComponent('vr', '/src/components/vr-wearable.html',
     async () => {
