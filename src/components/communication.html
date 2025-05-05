@@ -11,9 +11,25 @@
       </div>
       <div class="row mb-5">
         <p class="text-muted mt-2" style="max-width:700px; margin:0 auto; text-align:center;">
-          Das VR-Wearable wird auf Applikationsebene in Unity integriert und visualisiert Daten direkt in der Scene.
+            Provides wireless BLE communication to relay data efficiently between hardware and host system.
         </p>
       </div>
+
+      <div class="row justify-content-center mb-4">
+        <div class="col-9 text-center">
+          <img src="images/communication Interface.png"
+               alt="Communication Interface"
+               class="img-fluid rounded shadow system-design-img">
+        </div>
+      </div> 
+
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        The <strong>Arduino Nano 33 IoT</strong> sits at the heart of the communication interface. 
+        Powered via its onboard Micro-USB port (or by a 3.7 V LiPo cell), it acts as the I²C master 
+        for the SparkFun Bio Sensor Hub—polling heart-rate, SpO₂, and accelerometer data—then relays 
+        measurements either over USB serial or wirelessly via BLE to the host application.
+      </p>
+      
     </div>
   
    
