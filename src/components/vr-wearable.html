@@ -31,39 +31,23 @@
     <div id="threejs-canvas-vr-wearable" class="threejs-canvas"></div>
   </div>
 
-  <!-- Tabelle -->
   <div class="container mt-5 position-relative" style="z-index:2;">
-    <table class="table table-bordered table-striped custom-table">
-      <thead class="table-dark">
-        <tr><th colspan="2" class="text-center">Software</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row" style="width:25%;">For Arduino</th>
-          <td>
-            Libraries:<br>
-            &lt;Adafruit_MPU650.h&gt;<br>
-            &lt;Adafruit_Sensor.h&gt;<br>
-            &lt;SparkFun_Bio_Sensor_Hub_Library.h&gt;<br>
-            &lt;Wire.h&gt;<br><br>
-            GitHub-Code:<br>
-            <a href="https://github.com/D-Queck/SiderClip_Sensor" class="gradient-link">Download Arduino Code</a>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">For Unity</th>
-          <td>
-            SteamVR-Plugin:<br>
-            <a href="https://assetstore.unity.com/.../steamvr-plugin-32647" class="gradient-link">
-              SteamVR Plugin (Asset Store)
-            </a><br><br>
-            VR-Wearable SDK:<br>
-            <a href="https://github.com/D-Queck/VR_Wearable_Spiderclip" class="gradient-link">
-              GitHub Repository
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <p class="text-muted mt-2" style="max-width:700px; margin:0 auto; text-align:left;">
+      To integrate with Unity, we use the official <strong>SteamVR Plugin</strong> from the Unity Asset Store. It provides all 
+      the necessary APIs for Valve Index and HTC Vive tracking, ensuring seamless positional tracking within the Unity scene. 
+      You can find it here: 
+      <a href="https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647" class="gradient-link" target="_blank">
+        SteamVR Plugin (Asset Store)
+      </a>.
+    </p>
+  
+    <p class="text-muted mt-2" style="max-width:700px; margin:2rem auto 0; text-align:left;">
+      In addition, the <strong>VR-Wearable SDK</strong> provides all the building blocks for rendering and controlling SpiderClip 
+      in Unity. It includes C# scripts, prefabs, and demo scenes, and is available as an open-source project on GitHub:
+      <a href="https://github.com/D-Queck/VR_Wearable_Spiderclip" class="gradient-link" target="_blank">
+        VR-Wearable SDK (GitHub)
+      </a>.
+    </p>
   </div>
+  
 </section>
