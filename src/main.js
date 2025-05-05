@@ -1,7 +1,7 @@
 import './css/main.scss';
 import { initParallaxHero } from './js/parallax-hero.js';
 import { initParallaxSections } from './js/parallax-sections.js';
-import { initCodeSnippet } from './js/code-snippet.js';
+import { initCodeSnippets } from './js/code-snippet.js';
 
 async function loadComponent(id, path, initFn = null) {
   const res  = await fetch(path);
@@ -46,8 +46,7 @@ async function init() {
   // Parallax-effect
   initParallaxHero();
   initParallaxSections();
-  initCodeSnippet();
-
+  await initCodeSnippets();
 }
 
 init();
