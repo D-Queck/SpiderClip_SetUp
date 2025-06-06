@@ -1,0 +1,58 @@
+// src/css/modules/_hero.scss
+@use '../base/variables' as vars;
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;           // volle Höhe des Viewports
+  overflow: hidden;
+
+  // 1) Video als Hintergrund, absolut positioniert und komplett skalieren
+  &__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: 100%;         // Deckkrafthöhe: 100% des Containers
+    min-width: 100%;       // mindestens volle Breite
+    min-height: 100%;      // mindestens volle Höhe
+    transform: translate(-50%, -50%);
+    object-fit: cover;     // Füllt Container ohne Verzerrung
+    z-index: 1;
+  }
+
+  // 2) Overlay mit dunklem Rahmen und radialem Gradient
+  &__overlay {
+    position: absolute;
+    inset: 0;              // top/right/bottom/left: 0
+    background: 
+      radial-gradient(
+        circle at center, 
+        rgba(0, 0, 0, 0) 50%,      // Mitte durchsichtig
+        rgba(0, 0, 0, 0.6) 100%    // am Rand dunkel
+      );
+    pointer-events: none;   // Klicks gehen ans Video oder Content durch
+    z-index: 2;
+  }
+
+  // 3) Content über Video & Overlay
+  &__content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;        // vertikal zentriert
+    justify-content: center;    // horizontal zentriert
+    text-align: center;
+    padding: 0 1rem;
+
+    h1 {
+      color: white;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      max-width: 800px;
+      // ggf. Responsive-Font-Size mit Media Queries
+    }
+  }
+}
