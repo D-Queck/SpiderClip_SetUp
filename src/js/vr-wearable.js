@@ -16,13 +16,16 @@ export function initVRCanvas() {
   const camera = new THREE.PerspectiveCamera(
     45,
     container.clientWidth / container.clientHeight,
-    0.1, 10000
+    0.1,
+    10000
   );
-  camera.position.set(0,0,10);
+  camera.position.set(0, 0, 10);
 
-  const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.domElement.style.position = 'relative';
+  renderer.domElement.style.zIndex = '0';
   container.appendChild(renderer.domElement);
 
   // Controls
@@ -32,95 +35,110 @@ export function initVRCanvas() {
 
   // Licht
   scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-  const dir = new THREE.DirectionalLight(0xffffff,1);
-  dir.position.set(0,10,10);
+  const dir = new THREE.DirectionalLight(0xffffff, 1);
+  dir.position.set(0, 10, 10);
   scene.add(dir);
 
-  // Explosion & Auswahl wie Hardware
+  // ─── UI-Overlays ───
+  container.style.position = 'relative';
+
+  // Modell-Name in der Mitte oben
+  const overlayCenter = document.createElement('div');
+  overlayCenter.style.cssText = `
+    position: absolute;
+    top: 16px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 8px;
+    z-index: 10;
+    background: rgba(0,0,0,0.5);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+  `;
+  const nameEl = document.createElement('span');
+  nameEl.textContent = ''; // kommt nach Laden
+  overlayCenter.appendChild(nameEl);
+  container.appendChild(overlayCenter);
+
+  // Auto-Rotate-Button rechts oben
+  const overlayRight = document.createElement('div');
+  overlayRight.style.cssText = `
+    position: absolute;
+    top: 16px; right: 16px;
+    display: flex; align-items: center;
+    z-index: 10;
+    background: rgba(0,0,0,0.5);
+    padding: 4px 8px;
+    border-radius: 4px;
+  `;
+  const btnAuto = document.createElement('button');
+  btnAuto.textContent = '⟳';
+  btnAuto.style.cssText = `
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 2px 6px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 0.9rem;
+  `;
+  overlayRight.appendChild(btnAuto);
+  container.appendChild(overlayRight);
+
+  // ─── Model Loading & Logic ───
   const parts = [];
-  let exploded = false;
-  function explodeParts() {
-    parts.forEach(mesh => {
-      const dir = mesh.userData.originalPos.clone().normalize();
-      mesh.userData.targetPos = exploded
-        ? mesh.userData.originalPos.clone()
-        : mesh.userData.originalPos.clone().add(
-            dir.multiplyScalar(mesh.geometry.boundingSphere.radius * 1.5)
-          );
-    });
-    exploded = !exploded;
-  }
-  function showOnlyPart(name) {
-    parts.forEach(m => m.visible = (!name || m.userData.displayName === name));
-  }
+  const loader = new GLTFLoader();
 
-  // UI referenzen
-  const btnExpl = document.getElementById('btn-explode-vr');
-  const btnAuto = document.getElementById('btn-auto-rotate-vr');
-  const selPart = document.getElementById('select-part-vr');
-  [btnExpl, btnAuto, selPart].forEach(el => el && (el.disabled = true));
-
-  // GLTF laden
-  new GLTFLoader().load(
-    '/3D-objects/vr-wearable.glb', // oder .glb
+  loader.load(
+    '/3D-objects/vr-wearable.glb',
     gltf => {
-      const model = gltf.scene || gltf; // je nach Format
+      const model = gltf.scene || gltf;
+      nameEl.textContent = 'VR Wearable';
 
-      // Mesh registration
+      // Mesh-Registration
       model.traverse(node => {
         if (node.isMesh) {
           node.geometry.computeBoundingSphere();
-          node.userData.originalPos = node.position.clone();
           parts.push(node);
         }
       });
       scene.add(model);
 
-      // Dropdown füllen
-      selPart.innerHTML = '<option value="">Show All Parts</option>';
-      parts.forEach((m,i) => {
-        const opt = document.createElement('option');
-        opt.value = m.name || `Part ${i+1}`;
-        opt.textContent = m.name || `Part ${i+1}`;
-        selPart.append(opt);
+      // Auto-Rotate umschalten
+      btnAuto.addEventListener('click', () => {
+        controls.autoRotate = !controls.autoRotate;
+        btnAuto.style.opacity = controls.autoRotate ? '0.7' : '1';
       });
-      selPart.disabled = false;
-      selPart.addEventListener('change', e => showOnlyPart(e.target.value));
 
-      // Button-Listeners
-      btnExpl.disabled = btnAuto.disabled = false;
-      btnExpl.addEventListener('click', explodeParts);
-      btnAuto.addEventListener('click', () => controls.autoRotate = !controls.autoRotate);
-
-      // Auto-Framing
+      // Auto-Framing exakt wie bei Hardware-Canvas
       const bbox = new THREE.Box3().setFromObject(model);
       const size = bbox.getSize(new THREE.Vector3());
-      const ctr  = bbox.getCenter(new THREE.Vector3());
-      model.position.sub(ctr);
-      const maxDim = Math.max(size.x,size.y,size.z);
-      const fov = camera.fov * Math.PI/180;
-      const z   = Math.abs((maxDim/2)/Math.tan(fov/2))*1.2;
-      camera.position.set(0,0,z);
-      camera.near = maxDim/100; camera.far = maxDim*100;
+      const center = bbox.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+
+      const maxD = Math.max(size.x, size.y, size.z);
+      const fov  = camera.fov * Math.PI / 180;
+      const z    = Math.abs((maxD / 2) / Math.tan(fov / 2)) * 1.2;
+      camera.position.set(0, 0, z);
+      camera.near = maxD / 100;
+      camera.far  = maxD * 100;
       camera.updateProjectionMatrix();
-      controls.minDistance = maxDim*0.5;
-      controls.maxDistance = maxDim*5;
+
+      controls.minDistance = maxD * 0.5;
+      controls.maxDistance = maxD * 5;
     },
     undefined,
     err => console.error('Fehler beim Laden VR-Modell:', err)
   );
 
-  // Render-Loop
+  // ─── Animation & Resize ───
   (function animate() {
     requestAnimationFrame(animate);
-    parts.forEach(m => {
-      if (m.userData.targetPos) m.position.lerp(m.userData.targetPos, 0.1);
-    });
     controls.update();
     renderer.render(scene, camera);
   })();
 
-  // Resize
   window.addEventListener('resize', () => {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
