@@ -21,6 +21,9 @@ export async function initCodeSnippets() {
     // 2) highlight
     hljs.highlightElement(codeEl);
 
+    wrapper.classList.add('open');
+    btnToggle.setAttribute('aria-expanded', 'true');
+
     // 3) copy
     btnCopy.addEventListener('click', async () => {
       try {
