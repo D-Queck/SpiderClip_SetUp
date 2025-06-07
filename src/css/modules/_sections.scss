@@ -160,6 +160,31 @@
     border: 2px solid #fff;
     border-radius: 20px;     // passt zur abgerundeten Ecke
     }
+  }
 
+
+      &--publications {
+    min-height: 100vh;
+
+    background: url('../images/Background-About.png') no-repeat center bottom;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    min-height: 100vh;
+
+    background-attachment: fixed;
+
+    // Left-align subtitles in Hardware section (optional override)
+    .section__subtitle {
+      text-align: left;
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    #threejs-canvas-vr-wearable {
+    // Weißer Rahmen um den gesamten Container
+    border: 2px solid #fff;
+    border-radius: 20px;     // passt zur abgerundeten Ecke
+    }
   }
 }
