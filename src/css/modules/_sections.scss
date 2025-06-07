@@ -110,6 +110,12 @@
       margin-left: 0;
       margin-right: auto;
     }
+
+    #hardware-3d {
+    // Weißer Rahmen um den gesamten Container
+    border: 2px solid #fff;
+    border-radius: 20px;     // passt zur abgerundeten Ecke
+    }
   }
 
   &--communication {
@@ -148,5 +154,12 @@
       margin-left: 0;
       margin-right: auto;
     }
+
+    #threejs-canvas-vr-wearable {
+    // Weißer Rahmen um den gesamten Container
+    border: 2px solid #fff;
+    border-radius: 20px;     // passt zur abgerundeten Ecke
+    }
+
   }
 }
