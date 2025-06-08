@@ -39,6 +39,11 @@ export function initVRCanvas() {
   dir.position.set(0, 10, 10);
   scene.add(dir);
 
+  const bottomLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  bottomLight.position.set(0, -10, 10);
+  scene.add(bottomLight);
+
+
   // ─── UI-Overlays ───
   container.style.position = 'relative';
 
