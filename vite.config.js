@@ -2,11 +2,12 @@ import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
-  base: '/SpiderClip_SetUp/',     // oder './' – je nachdem, welche Variante du wählst
+  base: '/SpiderClip_SetUp/',           // bleibt so
   plugins: [
     viteStaticCopy({
       targets: [
-        { src: 'src/components', dest: '' }   // ⇽ kopiert nach dist/components
+        // kopiert src/components 1-zu-1 nach dist/src/components
+        { src: 'src/components', dest: 'src' }
       ]
     })
   ]
