@@ -1,6 +1,12 @@
-// vite.config.js
-import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
-  base: './',           // ⚑ relative Pfade
+  base: '/SpiderClip_SetUp/',
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        { src: 'src/components', dest: '' }   // landet als /components/… im dist
+      ]
+    })
+  ]
 });
