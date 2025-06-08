@@ -31,10 +31,20 @@ export function initHardwareCanvas() {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
 
-  scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-  const dirLight = new THREE.DirectionalLight(0xffffff, 2);
+  scene.add(new THREE.AmbientLight(0xffffff, 1.5));
+
+  const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
+  hemiLight.position.set(0, 10, 0);
+  scene.add(hemiLight);
+
+  const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
   dirLight.position.set(15, 20, 20);
   scene.add(dirLight);
+
+  const dirLight2 = new THREE.DirectionalLight(0xffffff, 1.0);
+  dirLight2.position.set(-15, -20, -20);
+  scene.add(dirLight2);
+
 
   
 
