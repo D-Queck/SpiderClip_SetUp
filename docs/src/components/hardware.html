@@ -1,0 +1,137 @@
+<section id="hardware" class="section section--hardware parallax-section">
+
+
+  <!-- Überschriften-Bereich -->
+  <div class="container position-relative" style="z-index: 2;">
+
+    <div class="spacer-lg"></div>
+    <div class="row mb-5">
+      <div class="col-12 text-center text-light" style="margin-top: 40px;">
+        <h1 class="heading-bg text-white fw-bold" style="padding: 20px; text-align: center">
+          Hardware-Sensor-Platform
+        </h1>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: center;">
+        The hardware sensor platform acts as the periphery of the communication interface.
+        It consists of a 3D-printed housing and a sensor platform with a communication module.
+      </p>
+    </div>
+  </div>
+
+  <!-- 3D-Modell + UI Overlay -->
+  <div id="hardware-3d" class="container position-relative"
+    style="background-color: #000; z-index: 1; border-radius: 20px;">
+
+    <!-- Three.js Canvas Container -->
+    <div id="threejs-canvas-hardware-sensor-platform" class="threejs-canvas"></div>
+  </div>
+
+  <div class="spacer-lg"></div>
+
+  <div class="row mt-5 mb-2">
+    <div class="col-12 text-center text-light">
+      <h2>3D-Housing</h2>
+      <div class="spacer-lg"></div>
+
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        The SpiderClip enclosure is designed as a three-piece shell that neatly houses all electronics – sensor board, battery and communication module.
+        Each shell half plus a top-cap are printed separately on any standard FDM or SLA printer. To fasten the parts you can either use a drop of strong
+        adhesive or insert M2.5 screws into the integrated bores and alignment pins.
+      </p>
+      <div class="spacer-md"></div>
+      <ul class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        <li><strong>Vive Tracker 1.0:</strong> Two Ø3 mm bores line up with the tracker’s mounting lugs. Snap the tracker in and secure with screws.</li>
+        <li><strong>Vive Tracker 2.0 / 3.0:</strong> Uses a slightly adjusted hole pattern and reinforced clip geometry – alignment pegs guarantee a flush fit.</li>
+        <li><strong>Controller-Loop Mount:</strong> Designed for Quest 2/3 or Index controllers. Feed a nylon strap through side slots and tighten around the grip.</li>
+      </ul>
+      <div class="spacer-md"></div>
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        In the 3D visualization aboth all drill-holes, slots and alignment pins are highlighted in red, so you can instantly see where to glue or
+        where to drive screws for each variant.
+      </p>
+
+      <div class="spacer-lg"></div>
+
+    </div>
+  </div>
+
+  <div class="row mt-5 mb-2">
+    <div class="col-12 text-center text-light">
+      <h2>Sensor Platform</h2>
+      <div class="spacer-lg"></div>
+
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        At the heart of the Hardware Sensor Platform sits an <strong>Arduino Nano 33 IoT</strong>, powered by a single
+        3.7 V LiPo cell, which communicates via I²C (SCL, SDA) with a SparkFun Bio Sensor Hub (pulse oximeter &amp;
+        heart‐rate). The Nano acts as I²C‐master: it polls the Bio Sensor for data and relays measurements over USB
+        or BLE to the host system.
+      </p>
+
+      <div class="spacer-lg"></div>
+      <div class="row justify-content-center mb-4">
+        <div class="col-9 text-center">
+          <img src="images/Wiring_White.png"
+               alt="System Design Diagram"
+               class="img-fluid rounded shadow-none system-design-img">
+        </div>
+      </div> 
+
+      <div class="spacer-lg"></div>
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        You can power the Nano 33 IoT either via its Micro-USB port (e.g. from your PC or a USB supply) or directly
+        from the LiPo battery. Both the sensor hub and the Nano share the same 3.7 V rail.
+      </p>
+      <div class="spacer-md"></div>
+    <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+      Before uploading the firmware, install the following Arduino libraries:
+    </p>
+    <ul class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+      <li>&lt;ArduinoBLE.h&gt;</li>
+      <li>&lt;Arduino_LSM6DS3.h&gt;</li>
+      <li>&lt;SparkFun_Bio_Sensor_Hub_Library.h&gt;</li>
+      <li>&lt;Wire.h&gt; (in der Regel bereits im Kern-Package enthalten)</li>
+    </ul>
+      <div class="spacer-md"></div>
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        You can download the completed sketch from GitHub:
+        <a href="https://github.com/D-Queck/SiderClip_Sensor" class="gradient-link" target="_blank">Download Arduino Code</a>
+      </p>
+  
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        Or alternatively, download it here in the section below:
+      </p>
+
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__label">peripheral.ino</span>
+          <button class="code-block__toggle" aria-label="Show Code">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 10l5 5 5-5z"/>
+            </svg>
+          </button>
+          <button class="code-block__copy" aria-label="Copy Code">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0
+                       1.1 .9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0
+                       16H8V7h11v14z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="code-block__content">
+          <pre><code data-snippet="peripheral" class="language-cpp"></code></pre>
+        </div>
+      </div>
+
+      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
+        Now the sketch needs to be uploaded to the Arduino.
+      </p>
+      
+
+    </div>
+
+
+  </div>
+
+</section>
