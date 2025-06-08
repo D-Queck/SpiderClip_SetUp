@@ -34,14 +34,19 @@ export function initVRCanvas() {
   controls.dampingFactor = 0.1;
 
   // Licht
-  scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-  const dir = new THREE.DirectionalLight(0xffffff, 1);
-  dir.position.set(0, 10, 10);
-  scene.add(dir);
-
-  const bottomLight = new THREE.DirectionalLight(0xffffff, 0.8);
-  bottomLight.position.set(0, -10, 10);
-  scene.add(bottomLight);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.5));
+  
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
+    hemiLight.position.set(0, 10, 0);
+    scene.add(hemiLight);
+  
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    dirLight.position.set(15, 20, 20);
+    scene.add(dirLight);
+  
+    const dirLight2 = new THREE.DirectionalLight(0xffffff, 1.0);
+    dirLight2.position.set(-15, -20, -20);
+    scene.add(dirLight2);
 
 
   // ─── UI-Overlays ───

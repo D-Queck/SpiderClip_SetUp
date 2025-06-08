@@ -124,6 +124,7 @@ export function initHardwareCanvas() {
   // ─────────────────────────────────────────────────────────────
   const models = [
     { url: '/3D-objects/SpiderClip_Prototype_2.glb', name: 'Prototype_2' },
+    { url: '/3D-objects/VR-controller-integration.glb', name: 'Prototype_3' },
     { url: '/3D-objects/SpiderClip_Prototype_1.glb', name: 'Prototype_1' },
   ];
   let current = 0, root = null;
