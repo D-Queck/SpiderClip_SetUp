@@ -5,6 +5,8 @@ import { initParallaxHero } from './js/parallax-hero.js';
 import { initParallaxSections } from './js/parallax-sections.js';
 import { initCodeSnippets } from './js/code-snippet.js';
 
+const base = import.meta.env.BASE_URL;  // Basispräfix für alle Ressourcen
+
 async function loadComponent(id, path, initFn = null) {
   const res  = await fetch(path);
   const html = await res.text();
@@ -13,32 +15,32 @@ async function loadComponent(id, path, initFn = null) {
 }
 
 async function init() {
-  await loadComponent('header', '/src/components/header.html');
+  await loadComponent('header', `${base}src/components/header.html`);
   await import('./js/header-blur.js');
 
-  await loadComponent('hero',    '/src/components/hero.html');
-  await loadComponent('about',   '/src/components/about.html');
-  await loadComponent('system',  '/src/components/system.html');
-  await loadComponent('resources','/src/components/resources.html');
+  await loadComponent('hero',        `${base}src/components/hero.html`);
+  await loadComponent('about',       `${base}src/components/about.html`);
+  await loadComponent('system',      `${base}src/components/system.html`);
+  await loadComponent('resources',   `${base}src/components/resources.html`);
 
-  await loadComponent('hardware','/src/components/hardware.html',
+  await loadComponent('hardware',    `${base}src/components/hardware.html`,
     async () => {
       const { initHardwareCanvas } = await import('./js/hardware-sensor-platform.js');
       initHardwareCanvas();
     }
   );
 
-  await loadComponent('communication','/src/components/communication.html');
+  await loadComponent('communication', `${base}src/components/communication.html`);
 
-  await loadComponent('vr', '/src/components/vr-wearable.html',
+  await loadComponent('vr', `${base}src/components/vr-wearable.html`,
     async () => {
       const { initVRCanvas } = await import('./js/vr-wearable.js');
       initVRCanvas();
     }
   );
 
-  await loadComponent('publications','/src/components/publications.html');
-  await loadComponent('footer','/src/components/footer.html');
+  await loadComponent('publications', `${base}src/components/publications.html`);
+  await loadComponent('footer',       `${base}src/components/footer.html`);
 
   // Parallax-Effekte initialisieren
   initParallaxHero();
