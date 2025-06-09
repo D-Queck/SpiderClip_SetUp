@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader }    from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+const base = import.meta.env.BASE_URL;
+
 export function initVRCanvas() {
   const container = document.getElementById('threejs-canvas-vr-wearable');
   if (!container) {
@@ -101,7 +103,7 @@ export function initVRCanvas() {
   const loader = new GLTFLoader();
 
   loader.load(
-    '/3D-objects/vr-wearable.glb',
+    '${base}3D-objects/vr-wearable.glb',
     gltf => {
       const model = gltf.scene || gltf;
       nameEl.textContent = 'VR Wearable';
