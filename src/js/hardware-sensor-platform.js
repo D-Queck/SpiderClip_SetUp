@@ -127,9 +127,9 @@ export function initHardwareCanvas() {
 
   
   const models = [
-+   { url: `${base}3D-objects/SpiderClip_Prototype_2.glb`,      name: 'Prototype 2' },
-+   { url: `${base}3D-objects/VR-controller-integration.glb`,   name: 'Prototype 3' },
-+   { url: `${base}3D-objects/SpiderClip_Prototype_1.glb`,      name: 'Prototype 1' },
+     { url: `${base}3D-objects/SpiderClip_Prototype_2.glb`,      name: 'Prototype 2' },
+     { url: `${base}3D-objects/VR-controller-integration.glb`,   name: 'Prototype 3' },
+     { url: `${base}3D-objects/SpiderClip_Prototype_1.glb`,      name: 'Prototype 1' },
   ];
   let current = 0, root = null;
   const loader = new GLTFLoader();
