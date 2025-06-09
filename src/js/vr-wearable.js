@@ -103,7 +103,7 @@ export function initVRCanvas() {
   const loader = new GLTFLoader();
 
   loader.load(
-    '${base}3D-objects/vr-wearable.glb',
+    `${base}3D-objects/vr-wearable.glb`,
     gltf => {
       const model = gltf.scene || gltf;
       nameEl.textContent = 'VR Wearable';
