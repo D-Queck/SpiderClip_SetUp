@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+const base = import.meta.env.BASE_URL; 
+
 export function initHardwareCanvas() {
   const container = document.getElementById('threejs-canvas-hardware-sensor-platform');
   if (!container) return console.error('Container fehlt.');
@@ -122,6 +124,8 @@ export function initHardwareCanvas() {
   // ─────────────────────────────────────────────────────────────
   // Model Loading & UI-Logik
   // ─────────────────────────────────────────────────────────────
+
+  
   const models = [
 +   { url: `${base}3D-objects/SpiderClip_Prototype_2.glb`,      name: 'Prototype 2' },
 +   { url: `${base}3D-objects/VR-controller-integration.glb`,   name: 'Prototype 3' },
