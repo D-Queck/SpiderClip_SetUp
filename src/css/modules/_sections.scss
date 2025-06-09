@@ -53,7 +53,7 @@
   }
 
   &--about {
-    background: url('../images/Background-About.png') no-repeat center center;
+    background: url('/images/Background-About.png') no-repeat center center;
     background-size: cover;
     min-height: 800px;
 
@@ -79,7 +79,7 @@
   }
 
   &--resources {
-    background: url('../images/Background-Resources.png') no-repeat center center;
+    background: url('/images/Background-Resources.png') no-repeat center center;
     background-size: cover;
     min-height: 100vh;
 
@@ -96,7 +96,7 @@
   &--hardware {
     min-height: 100vh;
 
-    background: url('../images/Hardware_Sensor_Background.png') no-repeat center bottom;
+    background: url('/images/Hardware_Sensor_Background.png') no-repeat center bottom;
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
@@ -121,7 +121,7 @@
   &--communication {
     min-height: 100vh;
 
-    background: url('../images/CommunicationBackground.png') no-repeat center bottom;
+    background: url('/images/CommunicationBackground.png') no-repeat center bottom;
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
@@ -140,7 +140,7 @@
     &--vr-wearable {
     min-height: 100vh;
 
-    background: url('../images/VRWearableBackground.png') no-repeat center bottom;
+    background: url('/images/VRWearableBackground.png') no-repeat center bottom;
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
@@ -166,7 +166,7 @@
       &--publications {
     min-height: 100vh;
 
-    background: url('../images/Background-About.png') no-repeat center bottom;
+    background: url('/images/Background-About.png') no-repeat center bottom;
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
