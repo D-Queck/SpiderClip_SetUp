@@ -1,98 +1,100 @@
 #include <ArduinoBLE.h>
-#include "DFRobot_Heartrate.h"
-#include <Arduino_LSM6DS3.h>
+#include <math.h>  
 
-#define heartratePin A0
-int  PowerPin = 12;
-DFRobot_Heartrate heartrate(DIGITAL_MODE);   // ANALOG_MODE oder DIGITAL_MODE
-
-BLEService        sensorService("19B10000-E8F2-537E-4F6C-D104768A1214");
-BLEIntCharacteristic ConfidenceCharacteristic("19B10001-E8F2-537E-4F6C-D104768A1212", BLERead);
-BLEIntCharacteristic OxygenCharacteristic    ("19B10001-E8F2-537E-4F6C-D104768A1213", BLERead);
-BLEIntCharacteristic HrCharacteristic        ("19B10001-E8F2-537E-4F6C-D104768A1214", BLERead);
-BLEIntCharacteristic AccxCharacteristic      ("19B10001-E8F2-537E-4F6C-D104768A1215", BLERead);
-BLEIntCharacteristic AccyCharacteristic      ("19B10001-E8F2-537E-4F6C-D104768A1216", BLERead);
-BLEIntCharacteristic AcczCharacteristic      ("19B10001-E8F2-537E-4F6C-D104768A1217", BLERead);
+float vectorVal  = 0;
+float oldVector  = 0;
+int   stepCount  = 0;
 
 void setup() {
-  pinMode(PowerPin, OUTPUT);
-  digitalWrite(PowerPin, HIGH);
-
   Serial.begin(9600);
-  delay(2000);
-  Serial.println("Sensor-Plattform gestartet");
-
-  if (!IMU.begin()) {
-    Serial.println("IMU-Initialisierung fehlgeschlagen!");
-    while (1);
-  }
+  while (!Serial);
+  
   if (!BLE.begin()) {
     Serial.println("BLE-Initialisierung fehlgeschlagen!");
     while (1);
   }
-
-  BLE.setLocalName("SpiderClip_Sensor");
-  BLE.setAdvertisedService(sensorService);
-
-  sensorService.addCharacteristic(HrCharacteristic);
-  sensorService.addCharacteristic(ConfidenceCharacteristic);
-  sensorService.addCharacteristic(OxygenCharacteristic);
-  sensorService.addCharacteristic(AccxCharacteristic);
-  sensorService.addCharacteristic(AccyCharacteristic);
-  sensorService.addCharacteristic(AcczCharacteristic);
-
-  BLE.addService(sensorService);
-  HrCharacteristic.writeValue(0);
-  ConfidenceCharacteristic.writeValue(0);
-  OxygenCharacteristic.writeValue(0);
-  AccxCharacteristic.writeValue(0);
-  AccyCharacteristic.writeValue(0);
-  AcczCharacteristic.writeValue(0);
-
-  BLE.advertise();
-  Serial.println("BLE Sensor Peripheral aktiv");
+  Serial.println("BLE Central gestartet");
+  // nach dem Sensor-Service scannen
+  BLE.scanForUuid("19B10000-E8F2-537E-4F6C-D104768A1214");
 }
 
 void loop() {
-  BLEDevice central = BLE.central();
-  if (!central) return;
-
-  Serial.print("Verbunden mit: ");
-  Serial.println(central.address());
-
-  while (central.connected()) {
-    // Herzfrequenz
-    heartrate.getValue(heartratePin);
-    uint8_t rate = heartrate.getRate();
-    Serial.print("HR: "); Serial.println(rate);
-    HrCharacteristic.writeValue(rate);
-
-    // Confidence & Oxygen aus body-Struct der Bibliothek
-    Serial.print("Conf: "); Serial.print(body.confidence);
-    Serial.print("  O2: ");   Serial.println(body.oxygen);
-    ConfidenceCharacteristic.writeValue(body.confidence);
-    OxygenCharacteristic.writeValue(body.oxygen);
-
-    // Beschleunigung
-    float x, y, z;
-    if (IMU.accelerationAvailable()) {
-      IMU.readAcceleration(x, y, z);
-      int ix = (int)(x * 1000);
-      int iy = (int)(y * 1000);
-      int iz = (int)(z * 1000);
-      Serial.print("Acc (mg): ");
-      Serial.print(ix); Serial.print(", ");
-      Serial.print(iy); Serial.print(", ");
-      Serial.println(iz);
-
-      AccxCharacteristic.writeValue(ix);
-      AccyCharacteristic.writeValue(iy);
-      AcczCharacteristic.writeValue(iz);
+  BLEDevice peripheral = BLE.available();
+  if (peripheral) {
+    Serial.print("Gefunden: ");
+    Serial.print(peripheral.address());
+    Serial.print(" '");
+    Serial.print(peripheral.localName());
+    Serial.print("' ");
+    Serial.println(peripheral.advertisedServiceUuid());
+    
+    // Nur unseren Sensor verbinden
+    if (peripheral.advertisedServiceUuid() == "19b10000-e8f2-537e-4f6c-d104768a1214") {
+      BLE.stopScan();
+      readSensorData(peripheral);
+      BLE.scanForUuid("19B10000-E8F2-537E-4F6C-D104768A1214");
     }
+  }
+}
+
+void readSensorData(BLEDevice peripheral) {
+  Serial.println("Verbinde …");
+  if (!peripheral.connect()) {
+    Serial.println("Verbindung fehlgeschlagen!");
+    return;
+  }
+  if (!peripheral.discoverAttributes()) {
+    Serial.println("Attribute-Discovery fehlgeschlagen!");
+    peripheral.disconnect();
+    return;
+  }
+
+  // Charakteristiken abrufen
+  BLECharacteristic confChar = peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1212");
+  BLECharacteristic oxyChar  = peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1213");
+  BLECharacteristic hrChar   = peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1214");
+  BLECharacteristic axChar   = peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1215");
+  BLECharacteristic ayChar   = peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1216");
+  BLECharacteristic azChar   = peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1217");
+
+  if (!hrChar) {
+    Serial.println("HR-Char fehlt!");
+    peripheral.disconnect();
+    return;
+  }
+
+  while (peripheral.connected()) {
+    // alle Werte einlesen
+    hrChar.read();
+    confChar.read();
+    oxyChar.read();
+    axChar.read();
+    ayChar.read();
+    azChar.read();
+
+    int   hr    = hrChar.value();
+    int   conf  = confChar.value();
+    int   oxy   = oxyChar.value();
+    float x     = axChar.value() * 0.001;
+    float y     = ayChar.value() * 0.001;
+    float z     = azChar.value() * 0.001;
+
+    // Schrittzählung
+    vectorVal = sqrt(x*x + y*y + z*z);
+    if (fabs(vectorVal - oldVector) > 0.25) stepCount++;
+    oldVector = vectorVal;
+
+    // JSON auf Serial ausgeben
+    Serial.print("{\"b\":");    Serial.print(hr);
+    Serial.print(",\"step\":"); Serial.print(stepCount);
+    Serial.print(",\"ax\":");   Serial.print(x, 3);
+    Serial.print(",\"ay\":");   Serial.print(y, 3);
+    Serial.print(",\"az\":");   Serial.print(z, 3);
+    Serial.println("}");
 
     delay(100);
   }
 
   Serial.print("Verbindung getrennt: ");
-  Serial.println(central.address());
+  Serial.println(peripheral.address());
 }
