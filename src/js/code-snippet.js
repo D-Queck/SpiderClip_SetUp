@@ -3,19 +3,26 @@ import hljs from 'highlight.js/lib/core';
 import cpp  from 'highlight.js/lib/languages/cpp';
 import 'highlight.js/styles/atom-one-dark.css';
 
+// Basispräfix für alle Fetch-Aufrufe
+const base = import.meta.env.BASE_URL;
+
 hljs.registerLanguage('cpp', cpp);
 
 export async function initCodeSnippets() {
   // find every code-block on the page
   document.querySelectorAll('.code-block').forEach(async wrapper => {
     const codeEl    = wrapper.querySelector('code[data-snippet]');
-    const name      = codeEl.getAttribute('data-snippet');  // "peripheral" or "central"
+    const name      = codeEl.getAttribute('data-snippet');  // "peripheral" oder "central"
     const btnCopy   = wrapper.querySelector('.code-block__copy');
     const btnToggle = wrapper.querySelector('.code-block__toggle');
     if (!codeEl || !btnCopy || !btnToggle) return;
 
-    // 1) fetch the right file
-    const txt = await fetch(`/src/code/${name}.ino`).then(r => r.text());
+    // 1) fetch the right file via BASE_URL
+    const path = `${base}src/code/${name}.ino`;
+    const txt  = await fetch(path).then(r => {
+      if (!r.ok) throw new Error(`Failed to load snippet: ${path}`);
+      return r.text();
+    });
     codeEl.textContent = txt;
 
     // 2) highlight
