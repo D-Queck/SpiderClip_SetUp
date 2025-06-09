@@ -4,7 +4,7 @@
 
 ![Hero](public/images/VR-Wearable-TeaserPic.png)
 
-SpiderClip Set‑Up combines a flexible **sensor platform** (Arduino Nano 33 IoT + tracker clip) with a fully‑featured **VR wearable**. This page works as a **public resource hub** where you can
+SpiderClip Set‑Up combines a flexible **sensor platform** (Arduino Nano 33 IoT + tracker clip) with a fully‑featured **VR wearable**. This page works as a **public resource hub** where you can:
 
 * explore interactive 3D models (GLB / STL)
 * grab ready‑to‑flash code snippets (C++ / Arduino)
@@ -62,7 +62,7 @@ $ npm run build
 $ npm run preview    # http://localhost:4173/
 ```
 
-> GitHub Pages is configured to deploy from **`main` / `docs`**. A built artefact is copied to `docs/` by CI or manually:
+> GitHub Pages is configured to deploy from **`main` / `docs`**. A built artifact is copied to `docs/` by CI or manually:
 >
 > ```bash
 > $ rm -rf docs && mkdir docs
@@ -77,17 +77,17 @@ $ npm run preview    # http://localhost:4173/
 ```
 public/                 # copied 1‑to‑1 into dist/
   ├─ 3D-objects/        # GLB & STL files
-  ├─ images/            # PNG/JPG
+  ├─ images/            # PNG/JPG assets
   └─ videos/            # MP4 teasers
-src/
+src/                    # source code & assets
   ├─ components/        # HTML snippets loaded at runtime
   ├─ code/              # .ino Arduino sketches
   ├─ css/               # Sass modules
-  ├─ js/                # Three.js, parallax, etc.
+  ├─ js/                # Three.js, parallax, and init scripts
   └─ main.js            # entry point (loads snippets & inits canvases)
 docs/                   # production build for GitHub Pages
-vite.config.js          # base path + static‑copy
-README.md
+vite.config.js          # base path + static‑copy plugin config
+README.md               # this file
 ```
 
 ---
@@ -122,4 +122,4 @@ MIT © 2025 Dirk Queck
 
 ## Contact
 
-* **Mail** · dirkqueck85@gmail.com
+* **Mail** · [dirkqueck85@gmail.com](mailto:dirkqueck85@gmail.com)
