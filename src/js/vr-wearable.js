@@ -1,7 +1,7 @@
 // src/js/vr-wearable.js
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader }    from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const base = import.meta.env.BASE_URL;
 
@@ -36,19 +36,19 @@ export function initVRCanvas() {
   controls.dampingFactor = 0.1;
 
   // Licht
-    scene.add(new THREE.AmbientLight(0xffffff, 1.5));
-  
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
-    hemiLight.position.set(0, 10, 0);
-    scene.add(hemiLight);
-  
-    const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
-    dirLight.position.set(15, 20, 20);
-    scene.add(dirLight);
-  
-    const dirLight2 = new THREE.DirectionalLight(0xffffff, 1.0);
-    dirLight2.position.set(-15, -20, -20);
-    scene.add(dirLight2);
+  scene.add(new THREE.AmbientLight(0xffffff, 1.5));
+
+  const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
+  hemiLight.position.set(0, 10, 0);
+  scene.add(hemiLight);
+
+  const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
+  dirLight.position.set(15, 20, 20);
+  scene.add(dirLight);
+
+  const dirLight2 = new THREE.DirectionalLight(0xffffff, 1.0);
+  dirLight2.position.set(-15, -20, -20);
+  scene.add(dirLight2);
 
 
   // ─── UI-Overlays ───
@@ -117,6 +117,39 @@ export function initVRCanvas() {
       });
       scene.add(model);
 
+      // ─── Debug-Quad direkt vor der Kamera ───
+    const texLoader = new THREE.TextureLoader();          // <-- hier deklarieren!
+    texLoader.load(
+      `${base}images/VR-WearableUI.png`,
+      hudTex => {
+        // Material
+        const mat = new THREE.MeshBasicMaterial({
+          map:         hudTex,
+          transparent: true,
+          opacity:     0.7,
+          depthTest:   true
+        });
+
+        // PlaneGeometry im korrekten Seitenverhältnis
+        const W     = 0.5;  // 50 cm breit
+        const ratio = hudTex.image.height / hudTex.image.width;
+        const H     = W * ratio;
+        const geo   = new THREE.PlaneGeometry(W, H);
+
+        // Mesh
+        const dbg = new THREE.Mesh(geo, mat);
+        dbg.scale.set(0.09, 0.09, 1);
+        dbg.name = 'DEBUG_HUD';
+        dbg.position.set(0, 0.013, 0.03);
+        dbg.frustumCulled = false;
+        scene.add(dbg);
+      },
+      undefined,
+      err => console.error('🚨 HUD-Texture konnte nicht geladen werden:', err)
+    );
+
+
+
       // Auto-Rotate umschalten
       btnAuto.addEventListener('click', () => {
         controls.autoRotate = !controls.autoRotate;
@@ -130,11 +163,11 @@ export function initVRCanvas() {
       model.position.sub(center);
 
       const maxD = Math.max(size.x, size.y, size.z);
-      const fov  = camera.fov * Math.PI / 180;
-      const z    = Math.abs((maxD / 2) / Math.tan(fov / 2)) * 1.2;
+      const fov = camera.fov * Math.PI / 180;
+      const z = Math.abs((maxD / 2) / Math.tan(fov / 2)) * 1.2;
       camera.position.set(0, 0, z);
       camera.near = maxD / 100;
-      camera.far  = maxD * 100;
+      camera.far = maxD * 100;
       camera.updateProjectionMatrix();
 
       controls.minDistance = maxD * 0.5;
