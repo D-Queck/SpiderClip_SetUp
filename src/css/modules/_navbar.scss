@@ -1,0 +1,12 @@
+
+.navbar-nav {
+  position: relative;                  // Anker für .magic-line
+}
+
+.nav-link {
+  position: relative;
+
+  &.active {
+    text-shadow: 0 0 6px rgb(255, 255, 255);
+  }
+}

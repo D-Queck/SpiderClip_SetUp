@@ -4,6 +4,7 @@ import './css/main.scss';
 import { initParallaxHero } from './js/parallax-hero.js';
 import { initParallaxSections } from './js/parallax-sections.js';
 import { initCodeSnippets } from './js/code-snippet.js';
+import { initScrollHighlight }  from './js/navbar-scroll-highlight.js';
 
 const base = import.meta.env.BASE_URL;  // Basispräfix für alle Ressourcen
 
@@ -17,6 +18,12 @@ async function loadComponent(id, path, initFn = null) {
 async function init() {
   await loadComponent('header', `${base}src/components/header.html`);
   await import('./js/header-blur.js');
+
+  initScrollHighlight({
+    linkSelector:    '#navbar-links .nav-link',
+    sectionSelector: 'div[id]',
+    activeClass:     'active'
+  });
 
   await loadComponent('hero',        `${base}src/components/hero.html`);
   await loadComponent('about',       `${base}src/components/about.html`);

@@ -1,4 +1,3 @@
-// src/css/modules/_sections.scss
 @use '../base/variables' as vars;
 @use '../base/typography' as typo;
 
@@ -15,19 +14,27 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
-    // Haupttitel zentrieren, Content links
     text-align: center;
 
-    // Unterbereiche (Sektion Content) linksbündig
-    & > .section__content {
+    &>.section__content {
       text-align: left;
     }
+  }
+
+  .threejs-wrapper {
+    width: 100%; // nimm die volle Breite deines Column-Containers
+    max-width: 1200px; // exakt dieselbe Max-Breite wie .section__inner
+    margin: 0 auto vars.$spacing-lg;
+    background-color: #000;
+    border: 1px solid #696969;
+    border-radius: 20px;
+    overflow: hidden;
     position: relative;
-    z-index: 2;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+
+    .threejs-canvas {
+      width: 100%;
+      height: 500px;
+    }
   }
 
   &__title {
@@ -56,10 +63,8 @@
     background: url('/images/Background-About.png') no-repeat center center;
     background-size: cover;
     min-height: 800px;
-
     background-attachment: fixed;
 
-    // Left-align subtitles in About section (optional override)
     .section__subtitle {
       text-align: left;
       margin-left: 0;
@@ -70,7 +75,6 @@
   &--system {
     min-height: 100vh;
 
-    // Left-align subtitles in System section (optional override)
     .section__subtitle {
       text-align: left;
       margin-left: 0;
@@ -82,10 +86,8 @@
     background: url('/images/Background-Resources.png') no-repeat center center;
     background-size: cover;
     min-height: 100vh;
-
     background-attachment: fixed;
 
-    // Left-align subtitles in Resources section
     .section__subtitle {
       text-align: left;
       margin-left: 0;
@@ -95,41 +97,27 @@
 
   &--hardware {
     min-height: 100vh;
-
     background: url('/images/Hardware_Sensor_Background.png') no-repeat center bottom;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
-    background-size: cover;
-    min-height: 100vh;
-
     background-attachment: fixed;
 
-    // Left-align subtitles in Hardware section (optional override)
     .section__subtitle {
       text-align: left;
       margin-left: 0;
       margin-right: auto;
-    }
-
-    #hardware-3d {
-    // Weißer Rahmen um den gesamten Container
-    border: 2px solid #fff;
-    border-radius: 20px;     // passt zur abgerundeten Ecke
     }
   }
 
   &--communication {
     min-height: 100vh;
-
     background: url('/images/CommunicationBackground.png') no-repeat center bottom;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
-    background-size: cover;
-    min-height: 100vh;
-
     background-attachment: fixed;
 
-    // Left-align subtitles in Hardware section (optional override)
     .section__subtitle {
       text-align: left;
       margin-left: 0;
@@ -137,54 +125,33 @@
     }
   }
 
-    &--vr-wearable {
+  &--vr-wearable {
     min-height: 100vh;
-
     background: url('/images/VRWearableBackground.png') no-repeat center bottom;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
-    background-size: cover;
-    min-height: 100vh;
-
     background-attachment: fixed;
 
-    // Left-align subtitles in Hardware section (optional override)
     .section__subtitle {
       text-align: left;
       margin-left: 0;
       margin-right: auto;
-    }
-
-    #threejs-canvas-vr-wearable {
-    // Weißer Rahmen um den gesamten Container
-    border: 2px solid #fff;
-    border-radius: 20px;     // passt zur abgerundeten Ecke
     }
   }
 
-
-      &--publications {
+  &--publications {
     min-height: 100vh;
-
     background: url('/images/Background-About.png') no-repeat center bottom;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
-    background-size: cover;
-    min-height: 100vh;
-
     background-attachment: fixed;
 
-    // Left-align subtitles in Hardware section (optional override)
     .section__subtitle {
       text-align: left;
       margin-left: 0;
       margin-right: auto;
-    }
-
-    #threejs-canvas-vr-wearable {
-    // Weißer Rahmen um den gesamten Container
-    border: 2px solid #fff;
-    border-radius: 20px;     // passt zur abgerundeten Ecke
     }
   }
 }
