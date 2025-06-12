@@ -1,89 +1,88 @@
 <section id="system" class="section section--system parallax-section">
-    <div class="spacer-lg"></div>
-  
-    <div class="section__inner container">
-      <!-- Hauptüberschrift -->
-      <h1 class="section__title">System</h1>
-  
-      <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto">
-        The system consists of three subsystems: a Hardware Sensor Platform,
-        a Communication Interface, and a VR-Wearable.
-      </p>
-  
-      <div class="spacer-lg"></div>
+  <div class="spacer-lg"></div>
 
-      <!-- Cards als Content -->
-      <div class="section__content row text-center justify-content-center">
-        <!-- Card 1 -->
-        <div class="col-md-4 mb-4">
-          <div class="glass-card h-100 d-flex flex-column p-4 mx-auto">
-            <img src="images/Hardware-sensor-platform-icon.png" alt="Hardware Icon" width="80">
-            <img src="images/3D-Hardware-Sensor-Platform.png" class="hover-img"
-                 alt="Hardware Sensor Platform Preview">
-            <h5 class="text-white mt-auto">Hardware Sensor Platform</h5>
-            <p class="text-muted-light small flex-grow-1">
-              Captures biometric and motion data through integrated sensors, designed for real-time streaming.
-            </p>
-          </div>
-        </div>
-  
-        <!-- Card 2 -->
-        <div class="col-md-4 mb-4">
-          <div class="glass-card d-flex flex-column align-items-center h-100 p-4 mx-auto">
-            <img src="images/Interface-icon.png" alt="Communication Icon" width="80">
-            <img src="images/Arduino.PNG" class="hover-img" alt="Communication Interface Preview">
-            <h5 class="text-white mt-auto">Communication Interface</h5>
-            <p class="text-muted-light small flex-grow-1">
-              Provides wireless BLE communication to relay data efficiently between hardware and host system.
-            </p>
-          </div>
-        </div>
-  
-        <!-- Card 3 -->
-        <div class="col-md-4 mb-4">
-          <div class="glass-card d-flex flex-column align-items-center h-100 p-4 mx-auto">
-            <img src="images/VR-icon.png" alt="VR Icon" width="80">
-            <img src="images/VR-Wearable-view.png" class="hover-img" alt="VR-Wearable Preview">
-            <h5 class="text-white mt-auto">VR-Wearable</h5>
-            <p class="text-muted-light small flex-grow-1">
-              An interactive VR model for data visualization and simulation within immersive training setups.
-            </p>
-          </div>
-        </div>
-      </div>
-  
-      <div class="spacer-lg"></div>
-  
-      <!-- System Design Untersektion -->
-      <div class="row mt-5 mb-2">
-        <div class="col-12 text-center text-light">
-          <h2>System Design</h2>
-          <div class="spacer-lg"></div>
-    
-          <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto">
-            The following schematic model illustrates how the SpiderClip system is structured and how its subsystems interact.
+  <div class="section__inner container">
+    <!-- Hauptüberschrift -->
+    <h1 class="section__title">System</h1>
+
+    <!-- Intro-Text: zentriert und weiß -->
+    <p class="intro-text">
+      The system consists of three subsystems: a Hardware Sensor Platform,
+      a Communication Interface, and a VR-Wearable.
+    </p>
+
+    <div class="spacer-lg"></div>
+
+    <!-- Cards als Content -->
+    <div class="section__content row text-center justify-content-center">
+      <!-- Card 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="glass-card h-100 d-flex flex-column p-4 mx-auto">
+          <img src="images/Hardware-sensor-platform-icon.png" alt="Hardware Icon" width="80">
+          <img src="images/3D-Hardware-Sensor-Platform.png" class="hover-img" alt="Hardware Sensor Platform Preview">
+          <h5 class="text-white mt-auto">Hardware Sensor Platform</h5>
+          <p class="text-muted-light small flex-grow-1 body-text">
+            Captures biometric and motion data through integrated sensors, designed for real-time streaming.
           </p>
         </div>
       </div>
 
-      <div class="spacer-lg"></div>
-  
-      <div class="row justify-content-center mb-4">
-        <div class="col-12 text-center">
-          <img src="images/System-Design.png"
-               alt="System Design Diagram"
-               class="img-fluid rounded shadow system-design-img">
+      <!-- Card 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="glass-card d-flex flex-column align-items-center h-100 p-4 mx-auto">
+          <img src="images/Interface-icon.png" alt="Communication Icon" width="80">
+          <img src="images/Arduino.PNG" class="hover-img" alt="Communication Interface Preview">
+          <h5 class="text-white mt-auto">Communication Interface</h5>
+          <p class="text-muted-light small flex-grow-1 body-text">
+            Provides wireless BLE communication to relay data efficiently between hardware and host system.
+          </p>
         </div>
-      </div>      
-  
-      <div class="row justify-content-center">
-        <p class="text-muted mt-2" style="max-width: 700px; margin: 0 auto; text-align: left;">
-          Simplified schematic representation of the simulation system.
-            It is integrated into a VR system with tracking capabilities. On the left: the hardware sensor
-            platform for capturing and processing sensor data. In the center: the communication interface, which
-            acts as the master of the BLE connection and serves as a serial bridge. It enables wireless
-            communication between the hardware sensor platform and the VR wearable. On the right: the VR wearable,
-            which is integrated at the application layer into a Unity project.
-        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="glass-card d-flex flex-column align-items-center h-100 p-4 mx-auto">
+          <img src="images/VR-icon.png" alt="VR Icon" width="80">
+          <img src="images/VR-Wearable-view.png" class="hover-img" alt="VR-Wearable Preview">
+          <h5 class="text-white mt-auto">VR-Wearable</h5>
+          <p class="text-muted-light small flex-grow-1 body-text">
+            An interactive VR model for data visualization and simulation within immersive training setups.
+          </p>
+        </div>
+      </div>
     </div>
-  </section>
+
+    <div class="spacer-lg"></div>
+
+    <!-- System Design Untersektion -->
+    <div class="row mt-5 mb-2">
+      <div class="col-12 text-center text-light">
+        <h2>System Design</h2>
+        <div class="spacer-sm"></div>
+
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <p class="text-muted body-text">
+              Simplified schematic representation of the simulation system.
+              It is integrated into a VR system with tracking capabilities. On the left: the hardware sensor
+              platform for capturing and processing sensor data. In the center: the communication interface, which
+              acts as the master of the BLE connection and serves as a serial bridge. It enables wireless
+              communication between the hardware sensor platform and the VR wearable. On the right: the VR wearable,
+              which is integrated at the application layer into a Unity project.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer-lg"></div>
+
+    <div class="row justify-content-center mb-4">
+      <div class="col-12 text-center">
+        <img src="images/System-Design.png" alt="System Design Diagram"
+          class="img-fluid rounded shadow system-design-img">
+      </div>
+    </div>
+
+  </div>
+</section>
