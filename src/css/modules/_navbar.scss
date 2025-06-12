@@ -1,15 +1,13 @@
-// z. B. in _navbar.scss
-.nav-link.active {
-  color: white;
-  font-weight: 600;
+
+.navbar-nav {
+  position: relative;                  // Anker für .magic-line
+}
+
+.nav-link {
   position: relative;
 
-  &::after { 
-    content: "";
-    position: absolute;
-    left: 0; right: 0; bottom: -.25rem;
-    height: 2px;
-    background: currentColor;
-    border-radius: 1px;
+  &.active {
+    color: white;
+    text-shadow: 0 0 6px white;
   }
 }
