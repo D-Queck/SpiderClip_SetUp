@@ -12,7 +12,7 @@
 
 .power-flow-overlay {
   position: absolute;
-  top: 36.25%; left: 33%;
+  top: 36%; left: 33%;
   width: 40%; height: 11%;
   pointer-events: none;
   background: linear-gradient(
@@ -29,5 +29,6 @@
   from { background-position: 100% 50%; }
   to   { background-position:   0% 50%; }
 }
+
 
 
