@@ -1,0 +1,15 @@
+// z. B. in _navbar.scss
+.nav-link.active {
+  color: white;
+  font-weight: 600;
+  position: relative;
+
+  &::after { 
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -.25rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+  }
+}
