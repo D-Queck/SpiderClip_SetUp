@@ -5,8 +5,9 @@
     <!-- Hauptüberschrift -->
     <h1 class="section__title">System</h1>
 
-    <!-- Intro-Text: zentriert und weiß -->
-    <p class="intro-text">
+    <!-- Intro-Text: zentriert, weiß, max-width 700px -->
+    <p class="intro-text"
+       style="max-width: 700px; margin: 0 auto; text-align: center;">
       The system consists of three subsystems: a Hardware Sensor Platform,
       a Communication Interface, and a VR-Wearable.
     </p>
@@ -61,8 +62,10 @@
         <div class="spacer-sm"></div>
 
         <div class="row justify-content-center">
-          <div class="col-12">
-            <p class="text-muted body-text">
+          <!-- Wrapper auf max-width 700px zentriert -->
+          <div class="col-12" style="max-width: 700px; margin: 0 auto;">
+            <p class="text-muted body-text"
+               style="text-align: left;">
               Simplified schematic representation of the simulation system.
               It is integrated into a VR system with tracking capabilities. On the left: the hardware sensor
               platform for capturing and processing sensor data. In the center: the communication interface, which
@@ -80,7 +83,7 @@
     <div class="row justify-content-center mb-4">
       <div class="col-12 text-center">
         <img src="images/System-Design.png" alt="System Design Diagram"
-          class="img-fluid rounded shadow system-design-img">
+             class="img-fluid rounded shadow system-design-img">
       </div>
     </div>
 
