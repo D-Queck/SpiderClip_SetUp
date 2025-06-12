@@ -1,21 +1,11 @@
-// src/js/scroll-highlight.js
+// src/js/navbar-scroll-highlight.js
 
-/**
- * Initialisiert das manuelle Highlighting der Navbar-Links
- * basierend auf den gerade sichtbaren Sections.
- *
- * @param {object} opts
- * @param {string} opts.linkSelector    CSS-Selektor für alle .nav-link
- * @param {string} opts.sectionSelector CSS-Selektor für alle Sektionen (mit IDs)
- * @param {string} opts.activeClass     Name der Klasse, die zum Highlighten genutzt wird
- * @param {object} [opts.options]       IntersectionObserver-Optionen
- */
 export function initScrollHighlight({
   linkSelector      = '.nav-link',
-  sectionSelector   = 'div[id]',
+  sectionSelector   = 'section[id]',       // wieder alle Section-Tags beobachten
   activeClass       = 'active',
   options           = { rootMargin: '-50% 0px -50% 0px' }
-}) {
+} = {}) {
   const links    = Array.from(document.querySelectorAll(linkSelector));
   const sections = Array.from(document.querySelectorAll(sectionSelector));
   const idToLink = new Map(
@@ -27,14 +17,19 @@ export function initScrollHighlight({
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      const id = entry.target.id;
+      const id   = entry.target.id;
       const link = idToLink.get(id);
-      if (!link) return;
+
       if (entry.isIntersecting) {
-        // alle anderen de-aktivieren
-        links.forEach(l => l.classList.remove(activeClass));
-        // diesen hier aktivieren
-        link.classList.add(activeClass);
+        // Wenn es einen Link für diese Section gibt: highlighten
+        if (link) {
+          links.forEach(l => l.classList.remove(activeClass));
+          link.classList.add(activeClass);
+
+        // Wenn es KEINEN Link gibt (z.B. hero): alle Highlights entfernen
+        } else {
+          links.forEach(l => l.classList.remove(activeClass));
+        }
       }
     });
   }, options);

@@ -7,7 +7,6 @@
   position: relative;
 
   &.active {
-    color: white;
-    text-shadow: 0 0 6px white;
+    text-shadow: 0 0 6px rgb(255, 255, 255);
   }
 }
