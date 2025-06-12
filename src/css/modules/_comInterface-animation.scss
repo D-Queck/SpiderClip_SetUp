@@ -1,0 +1,33 @@
+.power-flow-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.power-flow-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.power-flow-overlay {
+  position: absolute;
+  top: 36.25%; left: 33%;
+  width: 40%; height: 11%;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 25%,
+    rgba(255,255,255,0.8) 40%,
+    rgba(255,255,255,0) 55%
+  ) repeat;
+  background-size: 200% 200%;
+  animation: flow-animation 2s linear infinite;
+}
+
+@keyframes flow-animation {
+  from { background-position: 100% 50%; }
+  to   { background-position:   0% 50%; }
+}
+
+
