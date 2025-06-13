@@ -22,7 +22,6 @@
     border-color: rgba(255, 255, 255, 0.2);
   }
   
-  // Hover-Bild
   .hover-img {
     position: absolute;
     top: 0; left: 0;
@@ -33,15 +32,11 @@
     transition: opacity 0.5s ease, transform 0.5s ease;
     z-index: 1;
   }
-  
-// components/_cards.scss
 
 .glass-card {
   background: linear-gradient(135deg, rgba(76, 74, 219, 0.438), rgba(16, 140, 255, 0.02));
   border-radius: 20px;
-  /* nimm die max-width raus oder setze sie auf 100% */
   width: 100%;
-  /* max-width: 400px; */
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease-in-out;
@@ -53,11 +48,9 @@
   position: relative;
   overflow: hidden;
 
-  /* Flex nur für Inhalt, nicht um Höhe zu erzwingen */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* lösche das h-100-Äquivalent hier */
 }
 
   

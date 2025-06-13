@@ -10,7 +10,7 @@ export function initHardwareCanvas() {
   if (!container) return console.error('Container fehlt.');
 
   // ─────────────────────────────────────────────────────────────
-  // Three.js Setup (Canvas ganz vorne anhängen, z-index 0)
+  // Three.js Setup
   // ─────────────────────────────────────────────────────────────
   const scene    = new THREE.Scene();
   const camera   = new THREE.PerspectiveCamera(
@@ -25,7 +25,6 @@ export function initHardwareCanvas() {
   renderer.setSize(container.clientWidth, container.clientHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  // Canvas als erstes anfügen und ganz nach hinten legen
   renderer.domElement.style.position = 'relative';
   renderer.domElement.style.zIndex = '0';
   container.appendChild(renderer.domElement);
@@ -51,11 +50,9 @@ export function initHardwareCanvas() {
   
 
   // ─────────────────────────────────────────────────────────────
-  // 0) Überlagerungen anlegen
+  // 0) Overlay-UI
   // ─────────────────────────────────────────────────────────────
   container.style.position = 'relative';
-
-  // 0a) Top-Mitte: Name + Next
   const overlayCenter = document.createElement('div');
   overlayCenter.style.cssText = `
     position: absolute;
@@ -69,7 +66,7 @@ export function initHardwareCanvas() {
     font-family: sans-serif;
   `;
   const nameEl = document.createElement('span');
-  nameEl.textContent = '…'; // wird in loadModel gesetzt
+  nameEl.textContent = '…';
   const btnNext = document.createElement('button');
   btnNext.textContent = 'Next ▶';
   btnNext.style.cssText = `
@@ -83,7 +80,6 @@ export function initHardwareCanvas() {
   overlayCenter.append(nameEl, btnNext);
   container.appendChild(overlayCenter);
 
-  // 0b) Top-Rechts: Auto-Rotate + Parts-Select
   const overlayRight = document.createElement('div');
   overlayRight.style.cssText = `
     position: absolute;
@@ -122,10 +118,8 @@ export function initHardwareCanvas() {
   container.appendChild(overlayRight);
 
   // ─────────────────────────────────────────────────────────────
-  // Model Loading & UI-Logik
+  // Model Loading & UI-Logic
   // ─────────────────────────────────────────────────────────────
-
-  
   const models = [
      { url: `${base}3D-objects/SpiderClip_Prototype_2.glb`,      name: 'Prototype 2' },
      { url: `${base}3D-objects/VR-controller-integration.glb`,   name: 'Prototype 3' },
@@ -152,7 +146,6 @@ export function initHardwareCanvas() {
       root.position.sub(center);
       scene.add(root);
 
-      // Parts extrahieren
       let children = root.children.length === 1 ? root.children[0].children : root.children;
       children.forEach((c, i) => {
         if (c.isMesh || c.getObjectByProperty('isMesh', true)) {
@@ -161,14 +154,12 @@ export function initHardwareCanvas() {
         }
       });
 
-      // Dropdown befüllen
       selPart.innerHTML = '';
       selPart.append(new Option('Show All', ''));
       parts.forEach(p => selPart.append(new Option(p.userData.displayName, p.userData.displayName)));
 
       btnAuto.disabled = selPart.disabled = false;
 
-      // Kamera framing
       const fbox = new THREE.Box3().setFromObject(root);
       const size = fbox.getSize(new THREE.Vector3());
       const maxD = Math.max(size.x, size.y, size.z);
@@ -183,7 +174,6 @@ export function initHardwareCanvas() {
     });
   }
 
-  // Event-Handler
   btnAuto.addEventListener('click', () => controls.autoRotate = !controls.autoRotate);
   selPart.addEventListener('change', e => {
     const nm = e.target.value;
@@ -196,14 +186,12 @@ export function initHardwareCanvas() {
 
   loadModel(current);
 
-  // Animation
   (function animate() {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
   })();
 
-  // Resize-Handler
   window.addEventListener('resize', () => {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();

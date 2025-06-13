@@ -14,10 +14,8 @@ button:hover {
   opacity: 0.8;
 }
 
-/* z.B. in src/css/components/_buttons.scss */
-/* Select im Overlay */
 .scene-ui-select {
-  /* eigenes Pfeil-Icon */
+
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -26,18 +24,15 @@ button:hover {
   background-position: calc(100% - 0.5rem) center;
   background-size: 0.65rem;
 
-  /* Firefox scrollbar */
   scrollbar-width: thin;
   scrollbar-color: rgba(255,255,255,0.3) rgba(0,0,0,0.2);
 }
 
-/* Grund-Styling der Optionen */
 .scene-ui-select option {
   background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
 }
 
-/* Hover-Zustand mit sanftem Weiß-/Blau-Gradient */
 .scene-ui-select option:hover {
   background-image: linear-gradient(
     135deg,
@@ -48,7 +43,6 @@ button:hover {
   color: #fff !important;
 }
 
-/* Selected-Zustand etwas stärkerer Gradient */
 .scene-ui-select option:checked,
 .scene-ui-select option[selected] {
   background-color: linear-gradient(
@@ -59,7 +53,6 @@ button:hover {
   color: #fff !important;
 }
 
-/* WebKit-Browser scrollbar */
 .scene-ui-select::-webkit-scrollbar {
   width: 8px;
   height: 8px;
