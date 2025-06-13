@@ -118,35 +118,52 @@ export function initVRCanvas() {
       scene.add(model);
 
       // ─── Debug-Quad direkt vor der Kamera ───
-    const texLoader = new THREE.TextureLoader();          // <-- hier deklarieren!
-    texLoader.load(
-      `${base}images/VR-WearableUI.png`,
-      hudTex => {
-        // Material
-        const mat = new THREE.MeshBasicMaterial({
-          map:         hudTex,
-          transparent: true,
-          opacity:     0.7,
-          depthTest:   true
-        });
+      const texLoader = new THREE.TextureLoader();          // <-- hier deklarieren!
+      texLoader.load(
+        `${base}images/Watch.png`,
+        hudTex => {
+          // 1) Encoding auf sRGB setzen, damit Three.js weiß,
+          //    dass es erst in Linear konvertieren muss:
+          hudTex.encoding = THREE.sRGBEncoding;
 
-        // PlaneGeometry im korrekten Seitenverhältnis
-        const W     = 0.5;  // 50 cm breit
-        const ratio = hudTex.image.height / hudTex.image.width;
-        const H     = W * ratio;
-        const geo   = new THREE.PlaneGeometry(W, H);
+          // 2) Mipmaps & Filterung (schärfer)
+          hudTex.generateMipmaps = true;
+          hudTex.minFilter = THREE.LinearMipMapLinearFilter;
+          hudTex.magFilter = THREE.LinearFilter;
+          hudTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
 
-        // Mesh
-        const dbg = new THREE.Mesh(geo, mat);
-        dbg.scale.set(0.09, 0.09, 1);
-        dbg.name = 'DEBUG_HUD';
-        dbg.position.set(0, 0.013, 0.03);
-        dbg.frustumCulled = false;
-        scene.add(dbg);
-      },
-      undefined,
-      err => console.error('🚨 HUD-Texture konnte nicht geladen werden:', err)
-    );
+          // 3) Material mit emissivem Anteil, um Farben noch stärker zu pushen:
+          const mat = new THREE.MeshBasicMaterial({
+            map: hudTex,
+            transparent: true,
+            opacity: 0.7,
+            // emissive hebt das Bild quasi nochmal an:
+            emissive: new THREE.Color(0xffffff),
+            emissiveMap: hudTex,
+            depthTest: true
+          });
+
+          // PlaneGeometry im korrekten Seitenverhältnis
+          const W = 0.5;
+          const ratio = hudTex.image.height / hudTex.image.width;
+          const H = W * ratio;
+          const geo = new THREE.PlaneGeometry(W, H);
+
+          const dbg = new THREE.Mesh(geo, mat);
+          dbg.scale.set(0.09, 0.09, 1);
+          dbg.name = 'DEBUG_HUD';
+          dbg.position.set(0, 0.013, 0.03);
+          dbg.frustumCulled = false;
+          scene.add(dbg);
+
+          // 4) (optional) Renderer-Exposure hochziehen für mehr Leuchtkraft
+          //    je nach Szene kann hier 1.2–1.5 gut aussehen
+          renderer.toneMappingExposure = 1.3;
+        },
+        undefined,
+        err => console.error('🚨 HUD-Texture konnte nicht geladen werden:', err)
+      );
+
 
 
 
