@@ -6,9 +6,8 @@ export function initParallaxSections() {
     function update() {
       sections.forEach(sec => {
         const rect = sec.getBoundingClientRect();
-        // nur, wenn in Viewport (±screenHeight)
+
         if (rect.bottom > 0 && rect.top < window.innerHeight) {
-          // langsamer Versatz, z.B. 20%
           const offset = rect.top * 0.3;
           sec.style.backgroundPosition = `center ${offset}px`;
         }
@@ -24,6 +23,6 @@ export function initParallaxSections() {
     }
   
     window.addEventListener('scroll', onScroll, { passive: true });
-    update(); // einmal initial
+    update();
   }
   

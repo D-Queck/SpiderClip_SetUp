@@ -1,18 +1,16 @@
-// src/js/code-snippet.js
+
 import hljs from 'highlight.js/lib/core';
 import cpp  from 'highlight.js/lib/languages/cpp';
 import 'highlight.js/styles/atom-one-dark.css';
 
-// Basispräfix für alle Fetch-Aufrufe
 const base = import.meta.env.BASE_URL;
 
 hljs.registerLanguage('cpp', cpp);
 
 export async function initCodeSnippets() {
-  // find every code-block on the page
   document.querySelectorAll('.code-block').forEach(async wrapper => {
     const codeEl    = wrapper.querySelector('code[data-snippet]');
-    const name      = codeEl.getAttribute('data-snippet');  // "peripheral" oder "central"
+    const name      = codeEl.getAttribute('data-snippet');  
     const btnCopy   = wrapper.querySelector('.code-block__copy');
     const btnToggle = wrapper.querySelector('.code-block__toggle');
     if (!codeEl || !btnCopy || !btnToggle) return;

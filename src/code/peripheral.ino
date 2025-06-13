@@ -61,19 +61,17 @@ void loop() {
   Serial.println(central.address());
 
   while (central.connected()) {
-    // Herzfrequenz
+
     heartrate.getValue(heartratePin);
     uint8_t rate = heartrate.getRate();
     Serial.print("HR: "); Serial.println(rate);
     HrCharacteristic.writeValue(rate);
 
-    // Confidence & Oxygen aus body-Struct der Bibliothek
     Serial.print("Conf: "); Serial.print(body.confidence);
     Serial.print("  O2: ");   Serial.println(body.oxygen);
     ConfidenceCharacteristic.writeValue(body.confidence);
     OxygenCharacteristic.writeValue(body.oxygen);
 
-    // Beschleunigung
     float x, y, z;
     if (IMU.accelerationAvailable()) {
       IMU.readAcceleration(x, y, z);

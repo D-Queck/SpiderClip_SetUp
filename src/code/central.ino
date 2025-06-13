@@ -14,7 +14,6 @@ void setup() {
     while (1);
   }
   Serial.println("BLE Central gestartet");
-  // nach dem Sensor-Service scannen
   BLE.scanForUuid("19B10000-E8F2-537E-4F6C-D104768A1214");
 }
 
@@ -28,7 +27,6 @@ void loop() {
     Serial.print("' ");
     Serial.println(peripheral.advertisedServiceUuid());
     
-    // Nur unseren Sensor verbinden
     if (peripheral.advertisedServiceUuid() == "19b10000-e8f2-537e-4f6c-d104768a1214") {
       BLE.stopScan();
       readSensorData(peripheral);
@@ -49,7 +47,6 @@ void readSensorData(BLEDevice peripheral) {
     return;
   }
 
-  // Charakteristiken abrufen
   BLECharacteristic confChar = peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1212");
   BLECharacteristic oxyChar  = peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1213");
   BLECharacteristic hrChar   = peripheral.characteristic("19B10001-E8F2-537E-4F6C-D104768A1214");
@@ -64,7 +61,7 @@ void readSensorData(BLEDevice peripheral) {
   }
 
   while (peripheral.connected()) {
-    // alle Werte einlesen
+
     hrChar.read();
     confChar.read();
     oxyChar.read();
@@ -79,12 +76,10 @@ void readSensorData(BLEDevice peripheral) {
     float y     = ayChar.value() * 0.001;
     float z     = azChar.value() * 0.001;
 
-    // Schrittzählung
     vectorVal = sqrt(x*x + y*y + z*z);
     if (fabs(vectorVal - oldVector) > 0.25) stepCount++;
     oldVector = vectorVal;
 
-    // JSON auf Serial ausgeben
     Serial.print("{\"b\":");    Serial.print(hr);
     Serial.print(",\"step\":"); Serial.print(stepCount);
     Serial.print(",\"ax\":");   Serial.print(x, 3);

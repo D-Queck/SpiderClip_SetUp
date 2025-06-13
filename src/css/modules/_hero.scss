@@ -1,4 +1,4 @@
-// src/css/modules/_hero.scss
+
 @use '../base/variables' as vars;
 
 .hero {
@@ -76,24 +76,23 @@
   &__title {
     display: inline-block;
     color: white;
-    font-weight: 400;     // normaler Fließtext
-    font-size: 2.5rem;      // Beispielgröße, kannst du anpassen
+    font-weight: 400; 
+    font-size: 2.5rem; 
     line-height: 1.2;
     margin: 0;
     text-align: center;
   }
 
   &__icon {
-    font-size: 3rem;      // passend zur Headline-Größe
+    font-size: 3rem; 
     line-height: 1;
     margin-right: 0.5rem;
     vertical-align: middle;
     display: inline-block;
   }
 
-  /* Nur dieser Teil wird fetter */
   &__highlight {
-    font-weight: 700;    // fetter als der Rest
+    font-weight: 700;
     color: white;
   }
 }
@@ -105,8 +104,8 @@
   text-align: center;
 }
 
-.hero {  // oder .section--hero, je nachdem, wie deine Hero-Klasse heißt
-  position: relative;  // damit das Scroll-Element absolut darin sitzt
+.hero {  
+  position: relative;
 
   .scroll-down {
     position: absolute;
@@ -134,7 +133,6 @@
     }
   }
 
-  // Pfeil- und Bounce-Animationen
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
     40%                   { transform: translate(-50%, -8px); }

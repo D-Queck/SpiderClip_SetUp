@@ -1,14 +1,10 @@
-// src/css/main.scss
 
-// Base
 @use "./base/reset";
 @use "./base/variables";
 @use "./base/typography";
 
-// Layout
 @use "./layout/header";
 
-// Components
 @use "./components/buttons";
 @use "./components/cards";
 @use "./components/tables";
@@ -17,13 +13,10 @@
 @use "./components/code-block";
 @use "./components/tablebox";
 
-
-// Modules
 @use "./modules/threejs-ui";
 @use "./modules/sections";
 @use "./modules/hero";
 @use "./modules/navbar";
 @use "./modules/comInterface-animation";
 
-// Utilities
 @use "./utilities/helpers";

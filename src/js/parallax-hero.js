@@ -1,7 +1,6 @@
-// src/js/parallax-hero.js
 
 export function initParallaxHero() {
-  // 1) Parallax für Elemente mit .parallax (inkl. Hero nach Hinzufügen der Klasse)
+
   const parallaxSections = document.querySelectorAll('.parallax');
 
   function onScrollBackground() {
@@ -13,7 +12,6 @@ export function initParallaxHero() {
     });
   }
 
-  // 2) Video-/Overlay-Parallax
   const heroVideo = document.querySelector('.hero__video');
   const heroOverlay = document.querySelector('.hero__overlay');
 
@@ -29,7 +27,6 @@ export function initParallaxHero() {
     }
   }
 
-  // Falls weder Elemente mit .parallax noch das Hero-Video existieren, nichts tun
   if (!parallaxSections.length && !heroVideo) return;
 
   window.addEventListener(
@@ -41,7 +38,6 @@ export function initParallaxHero() {
     { passive: true }
   );
 
-  // Beim Laden einmalig aufrufen, damit Positionen initial gesetzt werden
   onScrollBackground();
   onScrollVideo();
 }

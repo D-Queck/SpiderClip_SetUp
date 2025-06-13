@@ -1,8 +1,7 @@
-// src/js/navbar-scroll-highlight.js
 
 export function initScrollHighlight({
   linkSelector      = '.nav-link',
-  sectionSelector   = 'section[id]',       // wieder alle Section-Tags beobachten
+  sectionSelector   = 'section[id]',  
   activeClass       = 'active',
   options           = { rootMargin: '-50% 0px -50% 0px' }
 } = {}) {
@@ -21,12 +20,11 @@ export function initScrollHighlight({
       const link = idToLink.get(id);
 
       if (entry.isIntersecting) {
-        // Wenn es einen Link für diese Section gibt: highlighten
+
         if (link) {
           links.forEach(l => l.classList.remove(activeClass));
           link.classList.add(activeClass);
 
-        // Wenn es KEINEN Link gibt (z.B. hero): alle Highlights entfernen
         } else {
           links.forEach(l => l.classList.remove(activeClass));
         }

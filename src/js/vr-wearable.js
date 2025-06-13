@@ -1,4 +1,4 @@
-// src/js/vr-wearable.js
+
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -12,7 +12,6 @@ export function initVRCanvas() {
     return;
   }
 
-  // Szene, Kamera, Renderer
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
   const camera = new THREE.PerspectiveCamera(
@@ -30,12 +29,10 @@ export function initVRCanvas() {
   renderer.domElement.style.zIndex = '0';
   container.appendChild(renderer.domElement);
 
-  // Controls
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.1;
 
-  // Licht
   scene.add(new THREE.AmbientLight(0xffffff, 1.5));
 
   const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
@@ -51,10 +48,7 @@ export function initVRCanvas() {
   scene.add(dirLight2);
 
 
-  // ─── UI-Overlays ───
   container.style.position = 'relative';
-
-  // Modell-Name in der Mitte oben
   const overlayCenter = document.createElement('div');
   overlayCenter.style.cssText = `
     position: absolute;
@@ -69,11 +63,10 @@ export function initVRCanvas() {
     font-size: 0.9rem;
   `;
   const nameEl = document.createElement('span');
-  nameEl.textContent = ''; // kommt nach Laden
+  nameEl.textContent = '';
   overlayCenter.appendChild(nameEl);
   container.appendChild(overlayCenter);
 
-  // Auto-Rotate-Button rechts oben
   const overlayRight = document.createElement('div');
   overlayRight.style.cssText = `
     position: absolute;
@@ -98,7 +91,6 @@ export function initVRCanvas() {
   overlayRight.appendChild(btnAuto);
   container.appendChild(overlayRight);
 
-  // ─── Model Loading & Logic ───
   const parts = [];
   const loader = new GLTFLoader();
 
@@ -108,7 +100,6 @@ export function initVRCanvas() {
       const model = gltf.scene || gltf;
       nameEl.textContent = 'VR Wearable';
 
-      // Mesh-Registration
       model.traverse(node => {
         if (node.isMesh) {
           node.geometry.computeBoundingSphere();
@@ -117,33 +108,25 @@ export function initVRCanvas() {
       });
       scene.add(model);
 
-      // ─── Debug-Quad direkt vor der Kamera ───
-      const texLoader = new THREE.TextureLoader();          // <-- hier deklarieren!
+      const texLoader = new THREE.TextureLoader();
       texLoader.load(
         `${base}images/Watch.png`,
         hudTex => {
-          // 1) Encoding auf sRGB setzen, damit Three.js weiß,
-          //    dass es erst in Linear konvertieren muss:
           hudTex.encoding = THREE.sRGBEncoding;
-
-          // 2) Mipmaps & Filterung (schärfer)
           hudTex.generateMipmaps = true;
           hudTex.minFilter = THREE.LinearMipMapLinearFilter;
           hudTex.magFilter = THREE.LinearFilter;
           hudTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
 
-          // 3) Material mit emissivem Anteil, um Farben noch stärker zu pushen:
           const mat = new THREE.MeshBasicMaterial({
             map: hudTex,
             transparent: true,
             opacity: 0.7,
-            // emissive hebt das Bild quasi nochmal an:
             emissive: new THREE.Color(0xffffff),
             emissiveMap: hudTex,
             depthTest: true
           });
 
-          // PlaneGeometry im korrekten Seitenverhältnis
           const W = 0.5;
           const ratio = hudTex.image.height / hudTex.image.width;
           const H = W * ratio;
@@ -156,24 +139,17 @@ export function initVRCanvas() {
           dbg.frustumCulled = false;
           scene.add(dbg);
 
-          // 4) (optional) Renderer-Exposure hochziehen für mehr Leuchtkraft
-          //    je nach Szene kann hier 1.2–1.5 gut aussehen
           renderer.toneMappingExposure = 1.3;
         },
         undefined,
         err => console.error('🚨 HUD-Texture konnte nicht geladen werden:', err)
       );
 
-
-
-
-      // Auto-Rotate umschalten
       btnAuto.addEventListener('click', () => {
         controls.autoRotate = !controls.autoRotate;
         btnAuto.style.opacity = controls.autoRotate ? '0.7' : '1';
       });
 
-      // Auto-Framing exakt wie bei Hardware-Canvas
       const bbox = new THREE.Box3().setFromObject(model);
       const size = bbox.getSize(new THREE.Vector3());
       const center = bbox.getCenter(new THREE.Vector3());
@@ -194,7 +170,6 @@ export function initVRCanvas() {
     err => console.error('Fehler beim Laden VR-Modell:', err)
   );
 
-  // ─── Animation & Resize ───
   (function animate() {
     requestAnimationFrame(animate);
     controls.update();
